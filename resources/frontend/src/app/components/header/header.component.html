@@ -1,0 +1,82 @@
+<nav id="navbar-main" class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container m-0">
+    <div>
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+        <li class="nav-item dropdown">
+          <a href="#"  data-toggle="dropdown" href="#" role="button">
+              <span class="nav-link-inner--text">
+                <i class="bi bi-menu-button-wide fa-2x"></i>
+                </span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="./examples/landing.html" class="dropdown-item">Landing</a>
+            <a href="./examples/profile.html" class="dropdown-item">Profile</a>
+            <a href="./examples/login.html" class="dropdown-item">Login</a>
+            <a href="./examples/register.html" class="dropdown-item">Register</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+
+
+    <div class="navbar-collapse collapse" id="navbar_global">
+
+      <div>
+        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+          <li class="nav-item">
+            <a class="navbar-brand" href="https://www.facebook.com/staniescki/" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
+              <span class="btn-inner--icon"><img src="/assets/img/icons/common/facebook.svg"></span>
+              <span class="nav-link-inner--text d-lg-none">Facebook</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="navbar-brand" href="https://www.instagram.com/diegostaniescki" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
+              <span class="btn-inner--icon"><img src="/assets/img/icons/common/instagram.svg"></span>
+              <span class="nav-link-inner--text d-lg-none">Instagram</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="navbar-brand" href="https://twitter.com/dstaniescki" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+              <span class="btn-inner--icon"><img src="/assets/img/icons/common/twitter.svg"></span>
+              <span class="nav-link-inner--text d-lg-none">Twitter</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="navbar-brand" href="https://github.com/diegostaniescki" target="_blank" data-toggle="tooltip" title="Star us on Github">
+              <span class="btn-inner--icon"><img src="/assets/img/icons/common/github.svg"></span>
+              <span class="nav-link-inner--text d-lg-none">Github</span>
+            </a>
+          </li>
+        </ul>
+    </div>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar_global-2">
+
+    <div>
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+          <li class="nav-item">
+            <span class="navbar-brand nav-link-inner--text entrar-como">ENTRAR: </span>
+            <button class="btn btn-outline-dark" [routerLink]="'/login'">
+              <span class="btn-inner--icon">
+                  <span class="btn-inner--icon"><img class="img" src="/assets/img/icons/common/entrar.png"></span>
+                </span>
+              <span class="nav-link-inner--text"> JOGADOR</span>
+            </button>
+          </li>
+          <li class="nav-item d-none d-lg-block">
+            <button class="btn btn-outline-dark" [routerLink]="'/login'">
+                <span class="btn-inner--icon">
+                  <span class="btn-inner--icon"><img class="img" src="/assets/img/icons/common/carrinho.png"></span>
+                </span>
+              <span class="nav-link-inner--text"> QUADRA</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+</nav>
+

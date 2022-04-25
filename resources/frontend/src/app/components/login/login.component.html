@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Login</title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <link href="/assets/css/font-awesome.css" rel="stylesheet" />
+  <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
+</head>
+
+<body>
+<!-- Navbar -->
+
+<!-- End Navbar -->
+<section class="section section-shaped section-lg">
+  <div class="container pt-lg-7">
+    <div class="row justify-content-center">
+      <div class="col-lg-5">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header bg-white pb-5">
+            <div class="text-muted text-center mb-3"><small>Entrar com:</small></div>
+            <div class="btn-wrapper text-center">
+              <a href="#" class="btn btn-neutral btn-icon">
+                <span class="btn-inner--icon"><img src="/assets/img/icons/common/github.svg"></span>
+                <span class="btn-inner--text">Github</span>
+              </a>
+              <a href="#" class="btn btn-neutral btn-icon">
+                <span class="btn-inner--icon"><img src="/assets/img/icons/common/google.svg"></span>
+                <span class="btn-inner--text">Google</span>
+              </a>
+            </div>
+          </div>
+          <div class="card-body px-lg-5 py-lg-5">
+            <div class="text-center text-muted mb-4">
+              <small>Ou faça login com as credenciais</small>
+            </div>
+            <form role="form">
+              <div class="form-group mb-3">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Email" type="email">
+                </div>
+              </div>
+              <div class="form-group focused">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Senha" type="password">
+                </div>
+              </div>
+              <div class="custom-control custom-control-alternative custom-checkbox">
+                <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
+                <label class="custom-control-label" for=" customCheckLogin"><span> Lembrar-me</span></label>
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary my-4">Entrar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-6">
+            <a href="#" class="text-light"><small>Esqueceu a senha?</small></a>
+          </div>
+          <div class="col-6 text-right">
+            <a  [routerLink]="'/novo-usuario'" class="text-light"><small>Criar uma nova conta</small></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+
+</html>

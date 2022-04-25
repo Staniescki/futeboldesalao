@@ -1,0 +1,17 @@
+
+#content-wrapper {
+  position: inherit !important;
+}
+
+aside,
+section {
+  height: 100% !important;
+}
+
+aside {
+  position: fixed;
+}
+
+section {
+  padding-bottom: 14px;
+}

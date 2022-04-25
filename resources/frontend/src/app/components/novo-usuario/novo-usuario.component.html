@@ -1,0 +1,111 @@
+<section>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item active" aria-current="page">Criar Novo Jogador</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-2">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                 class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">Diego Staniescki</h5>
+            <div class="row">
+              <div id="image" class="col">
+                <div class="md-form">
+                  <a href="">
+                  <mdb-icon id="icone" fas icon="camera" class="prefix"></mdb-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <p class="text-muted mb-1">Selecionar Foto</p>
+            <div class="d-flex justify-content-center mb-2">
+              <!--<button type="button" class="btn btn-primary">Follow</button>
+              <button type="button" class="btn btn-outline-primary ms-1">Message</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-8">
+          <div class="card-body">
+            <form [formGroup]="validationForm">
+              <div class="md-form">
+                <mdb-icon fas icon="user-secret" class="prefix"></mdb-icon>
+                <input mdbInput type="text" id="form2" class="form-control">
+                <label for="form2">Nome Completo</label>
+              </div>
+              <div class="md-form">
+                <mdb-icon fas icon="user-secret" class="prefix"></mdb-icon>
+                <input mdbInput type="text" id="form2" class="form-control">
+                <label for="form2">Apelido</label>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="md-form">
+                    <mdb-icon far icon="futbol" class="prefix"></mdb-icon>
+                    <input mdbInput type="text" id="form2" class="form-control">
+                    <label for="form2">Posição</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="md-form">
+                    <mdb-icon fas icon="shoe-prints" class="prefix"></mdb-icon>
+                    <input mdbInput type="text" id="form2" class="form-control">
+                    <label for="form2">Pé-Preferido</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="md-form">
+                    <select class="browser-default custom-select">
+                      <option selected>Sexo:</option>
+                      <option value="1">Masculino</option>
+                      <option value="2">Feminino</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="md-form">
+                    <input type="number" class="form-control" id="numberInputEx" mdbInput>
+                    <label for="numberInputEx">Idade</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="md-form">
+                    <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
+                    <input mdbInput mdbValidate formControlName="emailFormEx" minLength="8" maxLength="25" type="email"
+                           class="form-control" id="form9">
+                    <label for="form9">Insira seu e-mail</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="md-form">
+                    <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+                    <input mdbInput mdbValidate formControlName="passwordFormEx" minLength="10" maxLength="25"
+                           type="password"
+                           class="form-control" id="form10">
+                    <label for="form10">Insira sua senha</label>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-end">
+              <button type="button" mdbBtn color="success" mdbWavesEffect>Cadastrar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
