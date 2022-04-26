@@ -2,6 +2,9 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {CommonModule} from "@angular/common";
+import { MatSliderModule } from '@angular/material/slider'
+import {MatDatepickerModule} from '@angular/material/datepicker'
+
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
@@ -17,6 +20,11 @@ import { EstatisticasJogadorComponent } from './components/estatisticas-jogador/
 import { CriarTimeComponent } from './components/criar-time/criar-time.component';
 import { EstatisticasTimeComponent } from './components/estatisticas-time/estatisticas-time.component';
 import { PerfilTimeComponent } from './components/perfil-time/perfil-time.component'
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatNativeDateModule} from "@angular/material/core";
+import { MatInputModule } from '@angular/material/input';
+
 
 
 @NgModule({
@@ -32,6 +40,7 @@ import { PerfilTimeComponent } from './components/perfil-time/perfil-time.compon
     CriarTimeComponent,
     EstatisticasTimeComponent,
     PerfilTimeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -41,9 +50,16 @@ import { PerfilTimeComponent } from './components/perfil-time/perfil-time.compon
     FormsModule,
     CommonModule,
     MDBBootstrapModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
-  exports:[NovoUsuarioComponent],
+  exports:[NovoUsuarioComponent,
+    MatDatepickerModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
