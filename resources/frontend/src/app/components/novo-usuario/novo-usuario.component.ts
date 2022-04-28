@@ -10,6 +10,15 @@ export class NovoUsuarioComponent implements OnInit {
 
   validationForm: FormGroup;
 
+  public abaSelected = 'home'
+
+  public posicoes: Array<string> = [
+    'Pivo','Ala','Goleiro','Fixo'
+  ]
+
+  public changeAbaSelected(aba: string){
+    this.abaSelected = aba
+  }
 
   ngOnInit(){
 

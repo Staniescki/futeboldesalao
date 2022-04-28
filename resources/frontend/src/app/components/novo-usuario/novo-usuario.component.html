@@ -20,7 +20,7 @@
               <div id="image" class="col">
                 <div class="md-form">
                   <a href="">
-                  <mdb-icon id="icone" fas icon="camera" class="prefix"></mdb-icon>
+                    <mdb-icon id="icone" fas icon="camera" class="prefix"></mdb-icon>
                   </a>
                 </div>
               </div>
@@ -33,74 +33,209 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-8">
+       <div class="col-lg-8">
         <div class="card mb-8">
           <div class="card-body">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a [ngClass]="{active: abaSelected=='home'}" (click)="changeAbaSelected('home')" class="nav-link active"
+                   id="pills-home-tab" data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true">Dados
+                  Pessoais</a>
+              </li>
+              <li class="nav-item">
+                <a [ngClass]="{active: abaSelected=='profile'}" (click)="changeAbaSelected('profile')" class="nav-link"
+                   id="pills-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-profile"
+                   aria-selected="false">Endereço</a>
+              </li>
+              <li class="nav-item">
+                <a [ngClass]="{active: abaSelected=='contato'}" (click)="changeAbaSelected('contato')" class="nav-link"
+                   id="pills-contact-tab" data-toggle="pill" role="tab" aria-controls="pills-contact"
+                   aria-selected="false">Contato</a>
+              </li>
+            </ul>
             <form [formGroup]="validationForm">
-              <div class="md-form">
-                <mdb-icon fas icon="user-secret" class="prefix"></mdb-icon>
-                <input mdbInput type="text" id="form2" class="form-control">
-                <label for="form2">Nome Completo</label>
-              </div>
-              <div class="md-form">
-                <mdb-icon fas icon="user-secret" class="prefix"></mdb-icon>
-                <input mdbInput type="text" id="form2" class="form-control">
-                <label for="form2">Apelido</label>
-              </div>
-              <div class="form-row">
-                <div class="col">
+              <div class="tab-content" id="pills-tabContent">
+                <!--ABA DE DADOS PESSOAIS-->
+                <div [ngClass]="{'show active': abaSelected=='home'}" (click)="changeAbaSelected('home')"
+                     class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                   <div class="md-form">
-                    <mdb-icon far icon="futbol" class="prefix"></mdb-icon>
-                    <input mdbInput type="text" id="form2" class="form-control">
-                    <label for="form2">Posição</label>
+                    <mdb-icon fas icon="user-alt" class="prefix"></mdb-icon>
+                    <input mdbInput type="text" id="nome" class="form-control">
+                    <label for="nome">Nome Completo</label>
+                  </div>
+                  <div class="form-row">
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fas icon="user-secret" class="prefix"></mdb-icon>
+                        <input mdbInput type="text" id="apelido" class="form-control">
+                        <label for="apelido">Apelido</label>
+                      </div>
+                    </div>
+                      <div class="col d-flex justify-content-center">
+                          <div class="md-form">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Data de Nascimento</mat-label>
+                          <input matInput [matDatepicker]="picker">
+                          <!--<mat-hint>MM/DD/YYYY</mat-hint>
+                          Serve para colocar um placeholder
+                          -->
+                          <mat-datepicker-toggle matSuffix [for]="picker">
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                          </div>
+                      </div>
+                    </div>
+                  <div class="form-row">
+                    <div class="col">
+                      <div class="md-form">
+                        <select class="browser-default custom-select" for="posicao" id="posicao">
+                          <option value="" readonly="true" hidden="true" selected>Selecionar Posição</option>
+                          <option value="goleiro">Goleiro</option>
+                          <option value="ala-direita">Ala-direita</option>
+                          <option value="ala-esquerda">Ala-esquerda</option>
+                          <option value="fixo">Fixo</option>
+                          <option value="pivo">Pivô</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="md-form">
+                        <select class="browser-default custom-select" id="sexo" for="sexo">
+                          <option value="" readonly="true" hidden="true" selected>Sexo:</option>
+                          <option value="1">Masculino</option>
+                          <option value="2">Feminino</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fas icon="shoe-prints" class="prefix"></mdb-icon>
+                        <input mdbInput type="text" id="pe_preferido" class="form-control">
+                        <label for="pe_preferido">Pé-Preferido</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="md-form">
+                        <input type="number" class="form-control" id="idade" mdbInput>
+                        <label for="idade">Idade</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
+                        <input mdbInput mdbValidate formControlName="emailFormEx" minLength="8" maxLength="25"
+                               type="email"
+                               class="form-control" id="email">
+                        <label for="email">Insira seu e-mail</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+                        <input mdbInput mdbValidate formControlName="passwordFormEx" minLength="10" maxLength="25"
+                               type="password"
+                               class="form-control" id="senha">
+                        <label for="senha">Insira sua senha</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <button type="button" mdbBtn color="success" mdbWavesEffect>Cadastrar</button>
                   </div>
                 </div>
-                <div class="col">
+                <!--ABA DE ENDEREÇO-->
+                <div [ngClass]="{'show active': abaSelected=='profile'}" (click)="changeAbaSelected('profile')"
+                     class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                   <div class="md-form">
-                    <mdb-icon fas icon="shoe-prints" class="prefix"></mdb-icon>
-                    <input mdbInput type="text" id="form2" class="form-control">
-                    <label for="form2">Pé-Preferido</label>
+                  <mdb-icon fas icon="road" class="prefix"></mdb-icon>
+                  <input mdbInput type="text" id="rua" class="form-control">
+                  <label for="rua">Rua</label>
+                 </div>
+                  <div class="form-row">
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fas icon="address-card" class="prefix"></mdb-icon>
+                        <input mdbInput type="text" id="bairro" class="form-control">
+                        <label for="bairro">Bairro</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fas icon="sort-numeric-down" class="prefix"></mdb-icon>
+                        <input type="number" class="form-control" id="numero" mdbInput>
+                        <label for="numero">Numero</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fas icon="city" class="prefix"></mdb-icon>
+                        <input mdbInput type="text" id="cidade" class="form-control">
+                        <label for="cidade">Cidade</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fas icon="location-arrow" class="prefix"></mdb-icon>
+                        <input type="number" class="form-control" id="cep" mdbInput maxlength="8">
+                        <label for="cep">Cep</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form">
-                    <select class="browser-default custom-select">
-                      <option selected>Sexo:</option>
-                      <option value="1">Masculino</option>
-                      <option value="2">Feminino</option>
-                    </select>
+                <!--ABA DE CONTATO-->
+                <div [ngClass]="{'show active': abaSelected=='contato'}" (click)="changeAbaSelected('contato')"
+                     class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                  <div class="form-row">
+                  <div class="col">
+                    <div class="md-form">
+                      <mdb-icon fas icon="mobile-alt" class="prefix"></mdb-icon>
+                      <input type="number" class="form-control" id="celular" mdbInput maxlength="11">
+                      <label for="celular">Telefone Celular</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="md-form">
+                      <mdb-icon fas icon="phone" class="prefix"></mdb-icon>
+                      <input type="number" class="form-control" id="residencial" mdbInput maxlength="10">
+                      <label for="residencial">Telefone Residencial</label>
+                    </div>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="md-form">
-                    <input type="number" class="form-control" id="numberInputEx" mdbInput>
-                    <label for="numberInputEx">Idade</label>
+                  <hr>
+                  <div class="col">
+                    <h5 class="text-center text-black-50">Redes Sociais</h5>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fab icon="facebook" class="prefix"></mdb-icon>
+                        <input type="text" class="form-control" id="facebook" mdbInput>
+                        <label for="facebook">Facebook</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fab icon="instagram" class="prefix"></mdb-icon>
+                        <input type="text" class="form-control" id="instagram" mdbInput>
+                        <label for="instagram">Instagram</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="md-form">
+                        <mdb-icon fab icon="twitter" class="prefix"></mdb-icon>
+                        <input type="text" class="form-control" id="twitter" mdbInput>
+                        <label for="twitter">Twitter</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
-                    <input mdbInput mdbValidate formControlName="emailFormEx" minLength="8" maxLength="25" type="email"
-                           class="form-control" id="form9">
-                    <label for="form9">Insira seu e-mail</label>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
-                    <input mdbInput mdbValidate formControlName="passwordFormEx" minLength="10" maxLength="25"
-                           type="password"
-                           class="form-control" id="form10">
-                    <label for="form10">Insira sua senha</label>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex justify-content-end">
-              <button type="button" mdbBtn color="success" mdbWavesEffect>Cadastrar</button>
               </div>
             </form>
           </div>

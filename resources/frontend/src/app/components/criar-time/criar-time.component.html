@@ -37,24 +37,19 @@
         <div class="card mb-8">
           <div class="card-body">
             <form [formGroup]="validationForm">
-              <div class="md-form">
-                <mdb-icon fas icon="user-secret" class="prefix"></mdb-icon>
-                <input mdbInput type="text" id="form2" class="form-control">
-                <label for="form2">Nome do time</label>
-              </div>
               <div class="form-row">
                 <div class="col">
                   <div class="md-form">
                     <mdb-icon far icon="futbol" class="prefix"></mdb-icon>
-                    <input mdbInput type="text" id="form2" class="form-control">
-                    <label for="form2">Posição</label>
+                    <input mdbInput type="text" id="nome" class="form-control">
+                    <label for="nome">Nome do clube</label>
                   </div>
                 </div>
                 <div class="col">
                   <div class="md-form">
-                    <mdb-icon fas icon="shoe-prints" class="prefix"></mdb-icon>
-                    <input mdbInput type="text" id="form2" class="form-control">
-                    <label for="form2">Pé-Preferido</label>
+                    <mdb-icon fas icon="check" class="prefix"></mdb-icon>
+                    <input mdbInput type="text" id="oficial" class="form-control">
+                    <label for="oficial">Nome oficial do clube</label>
                   </div>
                 </div>
               </div>
@@ -62,38 +57,37 @@
                 <div class="col">
                   <div class="md-form">
                     <select class="browser-default custom-select">
-                      <option selected>Sexo:</option>
-                      <option value="1">Masculino</option>
-                      <option value="2">Feminino</option>
+                      <option value="" readonly="true" hidden="true" selected>Categoria do clube</option>
+                      <option value="ouro">Ouro</option>
+                      <option value="prata">Prata</option>
+                      <option value="bronze">Bronze</option>
                     </select>
                   </div>
                 </div>
                 <div class="col">
                   <div class="md-form">
-                    <input type="number" class="form-control" id="numberInputEx" mdbInput>
-                    <label for="numberInputEx">Idade</label>
+                    <mdb-icon fas icon="male" class="prefix"></mdb-icon>
+                    <input mdbInput type="text" id="presidente" class="form-control">
+                    <label for="presidente">Presidente do Clube</label>
                   </div>
                 </div>
               </div>
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
-                    <input mdbInput mdbValidate formControlName="emailFormEx" minLength="8" maxLength="25" type="email"
-                           class="form-control" id="form9">
-                    <label for="form9">Insira seu e-mail</label>
+                <div class="row">
+                  <div class="col">
+                    <div class="md-form">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Data de fundação</mat-label>
+                        <input matInput [matDatepicker]="picker">
+                        <!--<mat-hint>MM/DD/YYYY</mat-hint>
+                        Serve para colocar um placeholder
+                        -->
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                    </div>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
-                    <input mdbInput mdbValidate formControlName="passwordFormEx" minLength="10" maxLength="25"
-                           type="password"
-                           class="form-control" id="form10">
-                    <label for="form10">Insira sua senha</label>
-                  </div>
-                </div>
-              </div>
               <div class="d-flex justify-content-end">
                 <button type="button" mdbBtn color="success" mdbWavesEffect>Cadastrar</button>
               </div>

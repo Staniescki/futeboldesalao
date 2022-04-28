@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalendarOptions } from '@fullcalendar/angular'
 
 @Component({
   selector: 'app-estatisticas-time',
@@ -11,5 +12,15 @@ export class EstatisticasTimeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    weekends: false // initial value
+  };
+
+  toggleWeekends() {
+    this.calendarOptions.weekends = !this.calendarOptions.weekends // toggle the boolean!
+  }
+
 
 }

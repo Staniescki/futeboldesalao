@@ -1,33 +1,28 @@
 export const navbarData = [
   {
     routerLink: 'novo-usuario',
-    icon: 'fal fa-home',
+    icon: 'fa-solid fa-square-plus',
     label: 'Criar Jogador',
   },
   {
     routerLink: 'perfil-jogador',
-    icon: 'fal fa-box-open',
+    icon: 'fa-solid fa-person-circle-check',
     label: 'Perfil do Jogador',
   },
   {
     routerLink: 'estatisticas-jogador',
-    icon: 'fal fa-chart-bar',
+    icon: 'fa-solid fa-chart-gantt',
     label: 'Estatisticas do Jogador',
   },
   {
     routerLink: 'novo-time',
-    icon: 'fal fa-tags',
+    icon: 'fa-solid fa-plus',
     label: 'Criar Time',
   },
   {
     routerLink: 'perfil-time',
-    icon: 'fal fa-file',
+    icon: 'fa-solid fa-calendar',
     label: 'Perfil do Time',
-  },
-  {
-    routerLink: 'estatisticas-time',
-    icon: 'fal fa-camera',
-    label: 'Estatisticas do time',
   },
   {
     routerLink: 'settings',

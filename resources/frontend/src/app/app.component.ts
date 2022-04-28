@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import {LoginService} from "./services/login.service";
 
 interface SideNavToggle {
   screenWidth: number
@@ -20,6 +21,17 @@ export class AppComponent{
   onToogleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth
     this.isSideNavCollapsed = data.collapsed
+  }
+
+  mostrarMenu: boolean = false
+
+  constructor(private login: LoginService) {
+  }
+
+  ngOnInit(){
+    this.login.mostrarMenu.subscribe(
+      response => this.mostrarMenu = response
+    );
   }
 
 }

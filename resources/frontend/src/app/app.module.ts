@@ -5,6 +5,9 @@ import {CommonModule} from "@angular/common";
 import { MatSliderModule } from '@angular/material/slider'
 import {MatDatepickerModule} from '@angular/material/datepicker'
 
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
@@ -24,7 +27,13 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatNativeDateModule} from "@angular/material/core";
 import { MatInputModule } from '@angular/material/input';
+import {LoginService} from "./services/login.service";
 
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 
 @NgModule({
@@ -44,6 +53,7 @@ import { MatInputModule } from '@angular/material/input';
   ],
   imports: [
     BrowserModule,
+    FullCalendarModule,
     AppRoutingModule,
     IconsModule,
     ReactiveFormsModule,
@@ -60,7 +70,7 @@ import { MatInputModule } from '@angular/material/input';
   ],
   exports:[NovoUsuarioComponent,
     MatDatepickerModule],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })
