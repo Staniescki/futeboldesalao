@@ -3,7 +3,7 @@
 }
 
 .sidenav {
-  background: #263238;
+  background: #487c96;
   transition: all .5s ease;
   position: fixed;
   z-index: 1;
@@ -18,8 +18,10 @@
   .logo-container {
       display: flex;
       align-items: center;
-      padding: 0.938rem 0.938rem 0 0.938rem;
+      /*padding: 1.938rem 0.938rem 0 0.938rem;*/
       width: 100%;
+      background-color: #fff;
+      border-bottom: 0.1px solid black;
 
     .logo {
       background: #fff;
@@ -35,19 +37,19 @@
     }
 
     .logo-text {
-      margin-left: 1.5rem;
+      margin-left: 3.5rem;
       font-size: 24px;
       font-weight: 700;
-      color: #fff;
+      color: black;
     }
 
     .btn-close {
-      margin-left: auto;
+      margin-left: 15px;
       cursor: pointer;
       width: 2rem;
       height: 2rem;
       border-radius: 50%;
-      background-color: transparent;
+      background-color: #434547;
       border: none;
 
       .fa-times {
