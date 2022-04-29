@@ -25,9 +25,9 @@ export const navbarData = [
     label: 'Perfil do Time',
   },
   {
-    routerLink: 'settings',
-    icon: 'fal fa-cog',
-    label: 'Settings',
+    routerLink: 'agenda',
+    icon: 'fa-solid fa-calendar-days',
+    label: 'Agenda',
   },
   {
     routerLink: 'teste',

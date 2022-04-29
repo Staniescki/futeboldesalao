@@ -28,9 +28,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatNativeDateModule} from "@angular/material/core";
 import { MatInputModule } from '@angular/material/input';
 import {LoginService} from "./services/login.service";
+import { AgendaComponent } from './components/agenda/agenda.component';
 
 
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
 ]);
@@ -49,6 +50,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CriarTimeComponent,
     EstatisticasTimeComponent,
     PerfilTimeComponent,
+    AgendaComponent,
 
   ],
   imports: [

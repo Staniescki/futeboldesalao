@@ -8,6 +8,7 @@ import {EstatisticasJogadorComponent} from "./components/estatisticas-jogador/es
 import {EstatisticasTimeComponent} from "./components/estatisticas-time/estatisticas-time.component";
 import {CriarTimeComponent} from "./components/criar-time/criar-time.component";
 import {PerfilTimeComponent} from "./components/perfil-time/perfil-time.component";
+import {AgendaComponent} from "./components/agenda/agenda.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "", pathMatch: "full"},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: "estatisticas-time", component:EstatisticasTimeComponent},
   {path: "novo-time", component:CriarTimeComponent},
   {path: "perfil-time", component:PerfilTimeComponent},
+  {path: "agenda", component:AgendaComponent},
   {path: "login", component:LoginComponent}
 ];
 
