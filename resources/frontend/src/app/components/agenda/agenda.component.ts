@@ -4,9 +4,6 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 
-
-
-
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',

@@ -29,7 +29,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { MatInputModule } from '@angular/material/input';
 import {LoginService} from "./services/login.service";
 import { AgendaComponent } from './components/agenda/agenda.component';
-
+import { CalendarOptions } from '@fullcalendar/angular';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -70,8 +70,7 @@ FullCalendarModule.registerPlugins([
     MatNativeDateModule,
     MatInputModule
   ],
-  exports:[NovoUsuarioComponent,
-    MatDatepickerModule],
+  exports:[NovoUsuarioComponent,MatDatepickerModule],
   providers: [LoginService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
