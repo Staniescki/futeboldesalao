@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatFormFieldControl} from '@angular/material/form-field'
+import {MatDialog} from "@angular/material/dialog";
+import {EditarTimeComponent} from "./editar-time/editar-time.component";
 
 @Component({
   selector: 'app-perfil-time',
@@ -8,9 +9,13 @@ import {MatFormFieldControl} from '@angular/material/form-field'
 })
 export class PerfilTimeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openModalEditarTime(){
+    this.dialog.open(EditarTimeComponent)
   }
 
 }

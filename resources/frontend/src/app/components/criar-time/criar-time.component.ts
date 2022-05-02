@@ -15,17 +15,16 @@ export class CriarTimeComponent implements OnInit {
 
   constructor(public fb: FormBuilder) {
     this.validationForm = fb.group({
-      emailFormEx: ['', [Validators.required, Validators.email]],
-      passwordFormEx: ['', Validators.required],
+      nome: ['', Validators.required],
+      nome_oficial: ['', Validators.required],
+      categoria: ['', Validators.required],
+      presidente: ['', Validators.required],
+      fundacao_time: ['', Validators.required],
     });
   }
 
   get emailFormEx() {
     return this.validationForm.get('emailFormEx');
-  }
-
-  get passwordFormEx() {
-    return this.validationForm.get('passwordFormEx');
   }
 
 

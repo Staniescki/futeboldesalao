@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PerfilTimeComponent } from './perfil-time.component';
+import { EditarTimeComponent } from './editar-time.component';
 
-describe('PerfilTimeComponent', () => {
-  let component: PerfilTimeComponent;
-  let fixture: ComponentFixture<PerfilTimeComponent>;
+describe('EditarTimeComponent', () => {
+  let component: EditarTimeComponent;
+  let fixture: ComponentFixture<EditarTimeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PerfilTimeComponent ]
+      declarations: [ EditarTimeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PerfilTimeComponent);
+    fixture = TestBed.createComponent(EditarTimeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

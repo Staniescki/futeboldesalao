@@ -29,7 +29,11 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { MatInputModule } from '@angular/material/input';
 import {LoginService} from "./services/login.service";
 import { AgendaComponent } from './components/agenda/agenda.component';
-import { CalendarOptions } from '@fullcalendar/angular';
+import { EditarUsuarioComponent } from './components/perfil-jogador/editar-usuario/editar-usuario.component'
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditarTimeComponent } from './components/perfil-time/editar-time/editar-time.component';
+import { PagamentoComponent } from './components/pagamento/pagamento.component';
+
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -51,6 +55,9 @@ FullCalendarModule.registerPlugins([
     EstatisticasTimeComponent,
     PerfilTimeComponent,
     AgendaComponent,
+    EditarUsuarioComponent,
+    EditarTimeComponent,
+    PagamentoComponent,
 
   ],
   imports: [
@@ -68,7 +75,8 @@ FullCalendarModule.registerPlugins([
     MatButtonModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   exports:[NovoUsuarioComponent,MatDatepickerModule],
   providers: [LoginService],

@@ -12,7 +12,7 @@ export const navbarData = [
   {
     routerLink: 'estatisticas-jogador',
     icon: 'fa-solid fa-chart-gantt',
-    label: 'Estatisticas do Jogador',
+    label: 'Estatisticas de time',
   },
   {
     routerLink: 'novo-time',
@@ -30,9 +30,9 @@ export const navbarData = [
     label: 'Agenda',
   },
   {
-    routerLink: 'teste',
-    icon: 'fal fa-cog',
-    label: 'Menu with Children',
+    routerLink: 'pagamento',
+    icon: 'fa-solid fa-sack-dollar',
+    label: 'pagamento',
     submenuLevel1: [
       {
         routeLink: 'teste1',

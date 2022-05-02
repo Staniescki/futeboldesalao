@@ -11,6 +11,8 @@ import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 })
 export class AgendaComponent implements OnInit {
 
+
+
   constructor() { }
 
   calendarOptions: CalendarOptions = {

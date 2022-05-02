@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {EditarUsuarioComponent} from "./editar-usuario/editar-usuario.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-perfil-jogador',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilJogadorComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
+
+ openModal(){
+    this.dialog.open(EditarUsuarioComponent)
+ }
 
 }

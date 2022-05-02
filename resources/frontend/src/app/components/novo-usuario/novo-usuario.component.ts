@@ -1,5 +1,5 @@
-import {FormControl, Validators, FormBuilder, FormGroup} from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import {Validators, FormBuilder, FormGroup} from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-novo-usuario',
@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NovoUsuarioComponent implements OnInit {
 
-  validationForm: FormGroup;
+  formulario: FormGroup;
+
+  public celular: any
 
   public abaSelected = 'home'
 
@@ -25,18 +27,23 @@ export class NovoUsuarioComponent implements OnInit {
   }
 
   constructor(public fb: FormBuilder) {
-    this.validationForm = fb.group({
-      emailFormEx: ['', [Validators.required, Validators.email]],
-      passwordFormEx: ['', Validators.required],
+    this.formulario = fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', Validators.required],
+      nome_completo: ['', Validators.required],
+      apelido: ['', Validators.required],
+      data_nascimento: ['', Validators.required],
+      posicao: ['', Validators.required],
+      sexo: ['', Validators.required],
+      pe_preferido: ['', Validators.required],
+      idade: ['', Validators.required],
+      rua: ['', Validators.required],
+      bairro: ['', Validators.required],
+      numero: ['', Validators.required],
+      cidade: ['', Validators.required],
+      cep: ['', Validators.required],
+
     });
-  }
-
-  get emailFormEx() {
-    return this.validationForm.get('emailFormEx');
-  }
-
-  get passwordFormEx() {
-    return this.validationForm.get('passwordFormEx');
   }
 
 }

@@ -44,21 +44,21 @@
                    aria-selected="false">Contato</a>
               </li>
             </ul>
-            <form [formGroup]="validationForm">
+            <form [formGroup]="formulario">
               <div class="tab-content" id="pills-tabContent">
                 <!--ABA DE DADOS PESSOAIS-->
                 <div [ngClass]="{'show active': abaSelected=='home'}" (click)="changeAbaSelected('home')"
                      class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                   <div class="md-form">
                     <mdb-icon fas icon="user-alt" class="prefix"></mdb-icon>
-                    <input mdbInput type="text" id="nome" class="form-control">
+                    <input mdbInput  mdbValidate type="text" id="nome" class="form-control" formControlName="nome_completo">
                     <label for="nome">Nome Completo</label>
                   </div>
                   <div class="form-row">
                     <div class="col">
                       <div class="md-form">
                         <mdb-icon fas icon="user-secret" class="prefix"></mdb-icon>
-                        <input mdbInput type="text" id="apelido" class="form-control">
+                        <input mdbInput mdbValidate formControlName="apelido" type="text" id="apelido" class="form-control">
                         <label for="apelido">Apelido</label>
                       </div>
                     </div>
@@ -66,7 +66,7 @@
                           <div class="md-form">
                         <mat-form-field class="example-full-width">
                           <mat-label>Data de Nascimento</mat-label>
-                          <input matInput [matDatepicker]="picker">
+                          <input matInput  mdbValidate formControlName="data_nascimento" [matDatepicker]="picker">
                           <!--<mat-hint>MM/DD/YYYY</mat-hint>
                           Serve para colocar um placeholder
                           -->
@@ -80,7 +80,7 @@
                   <div class="form-row">
                     <div class="col">
                       <div class="md-form">
-                        <select class="browser-default custom-select" for="posicao" id="posicao">
+                        <select class="browser-default custom-select" for="posicao" id="posicao" mdbValidate formControlName="posicao">
                           <option value="" readonly="true" hidden="true" selected>Selecionar Posição</option>
                           <option value="goleiro">Goleiro</option>
                           <option value="ala-direita">Ala-direita</option>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="col">
                       <div class="md-form">
-                        <select class="browser-default custom-select" id="sexo" for="sexo">
+                        <select class="browser-default custom-select" id="sexo" for="sexo" mdbValidate formControlName="sexo">
                           <option value="" readonly="true" hidden="true" selected>Sexo:</option>
                           <option value="1">Masculino</option>
                           <option value="2">Feminino</option>
@@ -104,13 +104,13 @@
                     <div class="col">
                       <div class="md-form">
                         <mdb-icon fas icon="shoe-prints" class="prefix"></mdb-icon>
-                        <input mdbInput type="text" id="pe_preferido" class="form-control">
+                        <input mdbInput type="text" id="pe_preferido" class="form-control" mdbValidate formControlName="pe_preferido">
                         <label for="pe_preferido">Pé-Preferido</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="md-form">
-                        <input type="number" class="form-control" id="idade" mdbInput>
+                        <input type="number" class="form-control" id="idade" mdbInput mdbValidate formControlName="idade">
                         <label for="idade">Idade</label>
                       </div>
                     </div>
@@ -119,7 +119,7 @@
                     <div class="col">
                       <div class="md-form">
                         <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
-                        <input mdbInput mdbValidate formControlName="emailFormEx" minLength="8" maxLength="25"
+                        <input mdbInput mdbValidate formControlName="email" minLength="8" maxLength="25"
                                type="email"
                                class="form-control" id="email">
                         <label for="email">Insira seu e-mail</label>
@@ -128,7 +128,7 @@
                     <div class="col">
                       <div class="md-form">
                         <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
-                        <input mdbInput mdbValidate formControlName="passwordFormEx" minLength="10" maxLength="25"
+                        <input mdbInput mdbValidate formControlName="senha" minLength="10" maxLength="25"
                                type="password"
                                class="form-control" id="senha">
                         <label for="senha">Insira sua senha</label>
@@ -144,21 +144,21 @@
                      class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                   <div class="md-form">
                   <mdb-icon fas icon="road" class="prefix"></mdb-icon>
-                  <input mdbInput type="text" id="rua" class="form-control">
+                  <input mdbInput type="text" id="rua" mdbValidate formControlName="rua" class="form-control">
                   <label for="rua">Rua</label>
                  </div>
                   <div class="form-row">
                     <div class="col">
                       <div class="md-form">
                         <mdb-icon fas icon="address-card" class="prefix"></mdb-icon>
-                        <input mdbInput type="text" id="bairro" class="form-control">
+                        <input mdbInput type="text" id="bairro" mdbValidate formControlName="bairro" class="form-control">
                         <label for="bairro">Bairro</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="md-form">
                         <mdb-icon fas icon="sort-numeric-down" class="prefix"></mdb-icon>
-                        <input type="number" class="form-control" id="numero" mdbInput>
+                        <input type="number" class="form-control" formControlName="numero" mdbValidate id="numero" mdbInput>
                         <label for="numero">Numero</label>
                       </div>
                     </div>
@@ -167,14 +167,14 @@
                     <div class="col">
                       <div class="md-form">
                         <mdb-icon fas icon="city" class="prefix"></mdb-icon>
-                        <input mdbInput type="text" id="cidade" class="form-control">
+                        <input mdbInput type="text" mdbValidate formControlName="cidade" id="cidade" class="form-control">
                         <label for="cidade">Cidade</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="md-form">
                         <mdb-icon fas icon="location-arrow" class="prefix"></mdb-icon>
-                        <input type="number" class="form-control" id="cep" mdbInput maxlength="8">
+                        <input type="number" class="form-control" mdbValidate formControlName="cep" id="cep" mdbInput maxlength="8">
                         <label for="cep">Cep</label>
                       </div>
                     </div>
@@ -187,7 +187,7 @@
                   <div class="col">
                     <div class="md-form">
                       <mdb-icon fas icon="mobile-alt" class="prefix"></mdb-icon>
-                      <input type="number" class="form-control" id="celular" mdbInput maxlength="11">
+                      <input type="number" class="form-control" id="celular" mdbInput maxlength="11" >
                       <label for="celular">Telefone Celular</label>
                     </div>
                   </div>
@@ -235,3 +235,4 @@
     </div>
   </div>
 </section>
+
