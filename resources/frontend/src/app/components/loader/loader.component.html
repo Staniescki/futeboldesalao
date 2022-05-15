@@ -1,0 +1,25 @@
+<div *ngIf="isVisibleDefault && scope != 'inside'" [@visibleFullPage] class="default-loader-container">
+	<div class="item-1"></div>
+	<div class="item-2"></div>
+	<div class="item-3"></div>
+	<div class="item-4"></div>
+	<div class="item-5"></div>
+</div>
+<div *ngIf="isVisibleFullPage && scope != 'inside'" [@visibleFullPage] class="full-page-container">
+	<div class="spinner">
+		<div class="bounce1"></div>
+		<div class="bounce2"></div>
+		<div class="bounce3"></div>
+	</div>
+</div>
+
+<div *ngIf="isVisibleInside && scope == 'inside'" class="inside-loader-container" [style.top]="top" [style.opacity]="opacity">
+    <div class="loader-wrapper" [ngClass]="{'vertical-loader': verticalLoader}">
+      <div class="item-1"></div>
+      <div class="item-2"></div>
+      <div class="item-3"></div>
+      <div class="item-4"></div>
+      <div class="item-5"></div>
+    </div>
+</div>
+

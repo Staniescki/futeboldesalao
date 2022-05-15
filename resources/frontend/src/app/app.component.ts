@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
 import {LoginService} from "./services/login.service";
 
 interface SideNavToggle {
@@ -14,6 +13,8 @@ interface SideNavToggle {
 })
 export class AppComponent{
   title = 'frontend';
+
+  public main: any
 
   isSideNavCollapsed = false
   screenWidth = 0

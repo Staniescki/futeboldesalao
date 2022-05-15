@@ -35,7 +35,4 @@ export class AuthService {
     this.loggedIn.next(value)
   }
 
-  getIntegracoes() {
-    return this.http.get(this.config.get('urlServiceBackend') + 'auth/integracoes');
-  }
 }

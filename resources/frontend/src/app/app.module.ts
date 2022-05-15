@@ -37,6 +37,7 @@ import { PagamentoComponent } from './components/pagamento/pagamento.component'
 import { LoginComponent } from './components/login/login.component'
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import {HttpClientModule} from "@angular/common/http";
+import {LoaderComponent} from "./components/loader/loader.component"
 
 
 FullCalendarModule.registerPlugins([
@@ -62,6 +63,7 @@ FullCalendarModule.registerPlugins([
     EditarUsuarioComponent,
     EditarTimeComponent,
     PagamentoComponent,
+    LoaderComponent
 
 
 

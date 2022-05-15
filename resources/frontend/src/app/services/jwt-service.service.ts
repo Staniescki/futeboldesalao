@@ -15,7 +15,6 @@ export class JwtServiceService {
   constructor(private http: HttpClient) { }
 
   login(data: any) {
-    console.log(this.http.post(this.config.get('urlServiceBackend') + 'auth/login', data))
     return this.http.post(this.config.get('urlServiceBackend') + 'auth/login', data)
   }
 }

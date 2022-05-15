@@ -16,13 +16,13 @@ class CreateJogadoresTable extends Migration
         Schema::create('jogadores', function (Blueprint $table) {
             $table->id('id_jogador');
             $table->foreignId('id_usuario')->unique();
-            $table->string('nome_jogador');
+            $table->string('apelido');
             $table->smallInteger('idade');
             $table->enum('sexo', ['Masculino', 'Feminino']);
             $table->string('posicao');
             $table->enum('pe_preferido',['direito', 'esquerdo', 'ambos']);
 
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            $table->foreign('id_usuario')->references('id')->on('users');
 
         });
     }

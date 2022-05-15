@@ -3,7 +3,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { BehaviorSubject } from 'rxjs'
 
 
-const STORAGE_KEY = 'target_it_'
+const STORAGE_KEY = 'FuteboldeSalao'
 
 @Injectable({
   providedIn: 'root'

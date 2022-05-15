@@ -4,11 +4,22 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Usuarios;
+use App\Repositories\User\UserRepository;
 use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    /**
+     * userRepository
+     */
+    private $userRepository;
+
+    public function __construct()
+    {
+        $this->userRepository = new UserRepository();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +27,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = Usuarios::all();
+        $users = User::all();
         return response()->json($users);
     }
 
@@ -63,5 +74,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function create(Request $request)
+    {
+        $this->userRepository->createUser($request);
+        return response()->json(['message' => 'Usuario cadastrado com sucesso'], 200);
     }
 }

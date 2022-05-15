@@ -11,6 +11,7 @@ import {LocalStorageService} from "../../services/local-storage.service";
 import {UserService} from "../../services/user.service";
 import {SnotifyService} from "ng-snotify";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -56,8 +57,6 @@ export class LoginComponent implements OnInit {
       this.loader.hide()
       return
     }
-    console.log(this.loginForm)
-
     this.jwtService.login(this.loginForm.value).subscribe(
       (data: any) => {
         this.handleResponse(data)
@@ -75,28 +74,21 @@ export class LoginComponent implements OnInit {
    */
   async handleResponse(data: any, redirect = true) {
     this.loader.hide()
-    await this.token.handle(data.data.access_token)
+    await this.token.handle(data.access_token)
     this.auth.changeAuthStatus(true)
-    this.localStorageService.set('current_user', data.data.current_user)
+    this.localStorageService.set('current_user', data.current_user)
     this.userService.getUser().subscribe((response: any) => {
       this.localStorageService.set('usuario', response.data.usuario)
-      this.localStorageService.set('permissoes', response.data.usuario.permissoes)
-      this.localStorageService.set('permissoesTotais', response.data.usuario.permissoesTotais)
-      this.localStorageService.set('database', data.data.database)
+      /*this.localStorageService.set('permissoes', response.data.usuario.permissoes)
+      this.localStorageService.set('permissoesTotais', response.data.usuario.permissoesTotais)*/
       this.localStorageService.set('encode_expiry', data.data.encode.expiry)
     }, (error: any) => {
        this.notify.error("Ocorreu um erro ao resgatar permissoes")
     })
-    this.localStorageService.set('avisos', {avisos: []})
-    if (data.data.must_change_password) {
-      this.localStorageService.set('senha_expirada', true);
-      this.notify.error('Sua senha encontra-se expirada, por favor defina uma nova!');
-      this.router.navigateByUrl('/eu/alterar-senha');
-    } else if (redirect) {
+    if (redirect) {
       this.router.navigateByUrl('/novo-usuario');
     }
-
-    this.notify.success('Autenticado com sucesso!')
+     this.notify.success('Autenticado com sucesso!')
   }
 
   /**

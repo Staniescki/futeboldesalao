@@ -4,8 +4,6 @@ import { Config } from '../config/main'
 import {BehaviorSubject, Observable} from 'rxjs'
 import { LocalStorageService } from './local-storage.service'
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -31,17 +29,18 @@ export class UserService {
     return this.localStorageService.get('usuario')
   }
 
-  /**
-   * Obter lista de modulos que estão acessíveis para o usuário logado.
-   */
-  getModulos() {
-    return (this.localStorageService.get('usuario')) ? this.localStorageService.get('usuario').modulo : []
-  }
 
   /**
    * Envia o email com o link de redefinição de senha para o usuário
    */
   recoveryPassowrd(data: any) {
     return this.http.post(this.config.get('urlServiceBackend') + `auth/reset-password`, data)
+  }
+
+  /**
+   * Cadastra o Usuario
+   */
+  createUser(data: any): Observable<any>{
+    return this.http.post(this.config.get('urlServiceBackend') + `api/user/create`, data)
   }
 }

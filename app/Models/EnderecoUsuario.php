@@ -5,32 +5,32 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Jogadores
+ * Class EnderecoUsuario
  * @package App\Models
- *
- * @author Diego Staniescki
- * @link https://github.com/diegostaniescki
- * @date 2022-04-11 22:20:35
  */
-class Jogadores extends Model
+class EnderecoUsuario extends Model
 {
     /**
      * Nome da tabela
      * @var string
      */
-    protected $table = 'jogadores';
+    protected $table = 'endereco_usuario';
 
     /**
      * Lista de colunas Existentes na tabela
      * @var string[]
      */
-    protected $fillable = ['id_jogador', 'id_usuario', 'apelido', 'idade', 'sexo', 'posicao', 'pe_preferido'];
+    protected $fillable = ['id','id_usuario','bairro','cep','cidade','numero','rua','created_at','updated_at'];
 
+    /**
+     * @var string Chave Primaria
+     */
+    protected $primaryKey = 'id';
     /**
      * TimeStamps do eloquent
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     ############################# RELACIONAMENTOS ######################
 
