@@ -36,8 +36,12 @@ import { EditarTimeComponent } from './components/perfil-time/editar-time/editar
 import { PagamentoComponent } from './components/pagamento/pagamento.component'
 import { LoginComponent } from './components/login/login.component'
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {LoaderComponent} from "./components/loader/loader.component"
+import {TokenInterceptor} from "./services/interceptors/token-interceptor";
+import {LocalStorageService} from "./services/local-storage.service";
+import {JwtServiceService} from "./services/jwt-service.service";
+import {ForbiddenInterceptor} from "./services/interceptors/forbidden-interceptor";
 
 
 FullCalendarModule.registerPlugins([
@@ -93,7 +97,19 @@ FullCalendarModule.registerPlugins([
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService
+    SnotifyService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+      deps: [JwtServiceService, LocalStorageService]
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ForbiddenInterceptor,
+      multi: true,
+      deps: [SnotifyService]
+    }
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

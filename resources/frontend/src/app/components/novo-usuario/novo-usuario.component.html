@@ -4,14 +4,13 @@
       <div class="col-lg-4">
         <div class="card mb-2">
           <div class="card-body text-center">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                 class="rounded-circle img-fluid" style="width: 150px;">
+            <img [src]="imagemJogador" alt="avatar"
+                 class="rounded-circle img-fluid" style="width: 150px; height: 150px">
             <h5 class="my-3">Diego Staniescki</h5>
             <div class="row">
               <div id="image" class="col">
                 <div class="md-form">
-                  <input type="file" class="form-control" id="customFile" />
-                  <input type="file" class="form-control" (change)="onFileChange($event)" [(ngModel)]="file"  accept=".jpg,.png,.jpeg" id="imgJogador" name="imgJogador" formControlName="imgJogador">
+                  <input type="file" class="form-control" id="customFile" (change)="onFileChange($event)" accept=".jpg,.png,.jpeg" />
                 </div>
               </div>
             </div>

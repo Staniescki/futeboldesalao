@@ -41,6 +41,8 @@ export class UserService {
    * Cadastra o Usuario
    */
   createUser(data: any): Observable<any>{
-    return this.http.post(this.config.get('urlServiceBackend') + `api/user/create`, data)
+    console.log(data)
+    return this.http.post(this.config.get('urlServiceBackend') + 'user/create', data)
+
   }
 }

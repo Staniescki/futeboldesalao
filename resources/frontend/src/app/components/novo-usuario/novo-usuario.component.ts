@@ -1,11 +1,10 @@
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoaderService} from "../../services/loader.service";
 import {UserService} from "../../services/user.service";
 import {SnotifyService} from "ng-snotify";
 import * as moment from 'moment';
-
-
+import {Observable, Subscriber} from "rxjs";
 
 @Component({
   selector: 'app-novo-usuario',
@@ -30,6 +29,8 @@ export class NovoUsuarioComponent implements OnInit {
 
   public file: any
 
+  public imagemJogador: any
+
   public changeAbaSelected(aba: string){
     this.abaSelected = aba
   }
@@ -50,8 +51,7 @@ export class NovoUsuarioComponent implements OnInit {
       numero: ['', Validators.required],
       cidade: ['', Validators.required],
       cep: ['', Validators.required],
-      imgJogador: ['', Validators.required]
-
+      img: [''],
     })
   }
 
@@ -62,81 +62,61 @@ export class NovoUsuarioComponent implements OnInit {
 
 
   onSubmit(){
-    /*this.loader.show()
+
+    this.loader.show()
     if (!this.formulario.valid){
-    this.notify.warning('Revisar Formulario! Preenchimento incorreto')
+      this.notify.warning('Revisar Formulario! Preenchimento incorreto')
       this.loader.hide()
       return
-    }*/
-    let data: Array<any> = []
-
-    const reader = new FileReader()
-
-    reader.onloadend = () => {
-      this.imgComprovanteBase64 = reader.result
     }
 
-    if (this.imgComprovanteBase64 != null){
-      data['img'] = this.imgComprovanteBase64.split(',')[1]
+    if (this.imagemJogador != null) {
+      this.formulario.value.img = this.imagemJogador.split(',')[1]
+    }
+    if (this.formulario.value.data_nascimento != null) {
+      this.formulario.value.data_nascimento = moment(this.formulario.value.data_nascimento, 'DDMMYYYY').format('YYYY-MM-DD')
     }
 
-    if(this.formulario.value.email != null){
-      data['email'] = this.formulario.value.email
-    }
-    if(this.formulario.value.senha != null || this.formulario.value.senha){
-      data['senha'] = this.formulario.value.senha
-    }
-    if(this.formulario.value.nome_completo != null || this.formulario.value.nome_completo){
-      data['nome_completo'] = this.formulario.value.nome_completo
-    }
-    if(this.formulario.value.apelido != null || this.formulario.value.apelido){
-      data['apelido'] = this.formulario.value.apelido
-    }
-    if(this.formulario.value.data_nascimento != null || this.formulario.value.data_nascimento){
-      data['data_nascimento'] = moment(this.formulario.value.data_nascimento, 'DDMMYYYY').format('YYYY-MM-DD')
-    }
-    if(this.formulario.value.posicao != null || this.formulario.value.posicao){
-      data['posicao'] = this.formulario.value.posicao
-    }
-    if(this.formulario.value.sexo != null || this.formulario.value.sexo){
-      data['sexo'] = this.formulario.value.sexo
-    }
-    if(this.formulario.value.pe_preferido != null || this.formulario.value.pe_preferido){
-      data['pe_preferido'] = this.formulario.value.pe_preferido
-    }
-    if(this.formulario.value.idade != null || this.formulario.value.idade){
-      data['idade'] = this.formulario.value.idade
-    }
-    if(this.formulario.value.rua != null || this.formulario.value.rua){
-      data['rua'] = this.formulario.value.rua
-    }
-    if(this.formulario.value.bairro != null || this.formulario.value.bairro){
-      data['bairro'] = this.formulario.value.bairro
-    }
-    if(this.formulario.value.numero != null || this.formulario.value.numero){
-      data['numero'] = this.formulario.value.numero
-    }
-    if(this.formulario.value.cidade != null || this.formulario.value.cidade){
-      data['cidade'] = this.formulario.value.cidade
-    }
-    if(this.formulario.value.cep != null || this.formulario.value.cep){
-      data['cep'] = this.formulario.value.cep
-    }
-
-console.log(data)
-
-   /* this.userService.createUser(data).subscribe(responde => {
+    this.userService.createUser(this.formulario.value).subscribe(response => {
       this.loader.hide()
-      this.notify.success('Usuario inserido com sucesso')
+      this.handlerResponse(response)
     }, error => this.notify.error(error))
-*/
-    /*console.log(this.formulario.get('email').value)
-    console.log(this.formulario.value.email)*/
-
-
   }
 
-  onFileChange(event: any): void {
-    this.elementFile = event.target
+  onFileChange(event: Event): void {
+    this.elementFile = (event.target as HTMLInputElement).files[0]
+    this.convertToBase64(this.elementFile)
+  }
+
+  convertToBase64(file: File){
+    const observable = new Observable((subscriber: Subscriber<any>) => {
+      this.readFile(file, subscriber)
+    });
+    observable.subscribe((foto) => {
+      this.imagemJogador = foto
+    })
+  }
+
+  readFile(file: File, subscriber: Subscriber<any>){
+    const filereader = new FileReader()
+      filereader.readAsDataURL(file)
+      filereader.onload = () => {
+      subscriber.next(filereader.result)
+      subscriber.complete()
+    }
+    filereader.onerror = (error) => {
+      subscriber.error(error)
+      subscriber.complete()
+    }
+  }
+
+  handlerResponse(data: any){
+    if(data.code == '200'){
+      this.notify.success(data.message)
+    }
+    if (data.code == '210'){
+      this.notify.warning('Email ja utilizado, favor revisar!')
+    }
+
   }
 }
