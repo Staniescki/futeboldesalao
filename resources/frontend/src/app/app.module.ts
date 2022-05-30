@@ -42,6 +42,7 @@ import {TokenInterceptor} from "./services/interceptors/token-interceptor";
 import {LocalStorageService} from "./services/local-storage.service";
 import {JwtServiceService} from "./services/jwt-service.service";
 import {ForbiddenInterceptor} from "./services/interceptors/forbidden-interceptor";
+import { CriarEventoComponent } from './components/agenda/criar-evento/criar-evento.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -67,7 +68,8 @@ FullCalendarModule.registerPlugins([
     EditarUsuarioComponent,
     EditarTimeComponent,
     PagamentoComponent,
-    LoaderComponent
+    LoaderComponent,
+    CriarEventoComponent
 
 
 

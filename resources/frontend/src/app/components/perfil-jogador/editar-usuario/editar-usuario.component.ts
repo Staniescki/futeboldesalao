@@ -37,6 +37,8 @@ export class EditarUsuarioComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.dialogRef.updateSize('50%', '80%');
+
   }
 
   closeModal(){
