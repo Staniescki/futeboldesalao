@@ -25,6 +25,10 @@ Route::group(['middleware' => ['apiJwt']], function (){
         Route::post('create', 'UserController@create');
         Route::get('users', 'UserController@index');
     });
+    Route::group(['prefix' => 'agenda', 'namespace' => 'Api'], function () {
+       Route::get('horarios', 'AgendaController@horarios');
+       Route::post('criar', 'AgendaController@criarHorario');
+    });
 
 });
 

@@ -1,10 +1,46 @@
+<h1 mat-dialog-title>Cadastro de partida</h1>
 <mat-dialog-content class="mat-typography">
-  <div class="col-lg-8" id="div">
-     <p>RJAIJRAIRJRAIRJ</p>
-  </div>
+  <form [formGroup]="cadastroForm">
+    <div class="row">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Titulo da Partida:</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Data da partida</mat-label>
+          <input matInput type="datetime-local" formControlName="start">
+          <mat-datepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center"><h5> ATÉ </h5></div>
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Data da partida</mat-label>
+          <input matInput type="datetime-local" formControlName="end">
+          <mat-datepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Quadra</mat-label>
+          <select matNativeControl readonly formControlName="quadra_id">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button type="button" class="btn btn-dark" mat-dialog-close>Fechar</button>
-  <button mat-button type="button" class="btn btn-success" [mat-dialog-close]="true" cdkFocusInitial>Salvar Alterações
+  <button mat-button type="button" class="btn btn-success" (click)="onSubmit()" cdkFocusInitial>Salvar Alterações
   </button>
 </mat-dialog-actions>

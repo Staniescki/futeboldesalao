@@ -61,7 +61,7 @@ export class AgendaComponent implements OnInit {
     if(info.view.type == 'dayGridMonth') {
       info.view.calendar.changeView('timeGridDay',info.dateStr)
     }else{
-      this.dialog.open(CriarEventoComponent)
+      this.dialog.open(CriarEventoComponent, {disableClose: true, height: '40%',width: '60%'})
     }
   }
 
