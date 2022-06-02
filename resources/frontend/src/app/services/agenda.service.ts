@@ -18,4 +18,9 @@ export class AgendaService {
   getHorariosQuadra(): Observable<any>{
     return this.http.get(this.config.get('urlServiceBackend') + 'agenda/horarios')
   }
+
+  salvarPartida(data: any): Observable<any> {
+    return this.http.post(this.config.get('urlServiceBackend') + 'agenda/criar', data)
+  }
+
 }

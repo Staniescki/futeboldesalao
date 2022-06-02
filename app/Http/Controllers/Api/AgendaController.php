@@ -21,6 +21,8 @@ class AgendaController extends Controller
 
     public function criarHorario(Request $request)
     {
+        $this->agendaRepository->criarEvento($request);
+        return response()->json(['Sucesso'],200);
 
     }
 

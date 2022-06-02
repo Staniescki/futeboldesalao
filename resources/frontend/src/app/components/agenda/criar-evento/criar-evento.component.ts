@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoaderService} from "../../../services/loader.service";
 import {SnotifyService} from "ng-snotify";
+import {AgendaComponent} from "../agenda.component";
+import * as moment from 'moment';
+import {AgendaService} from "../../../services/agenda.service";
 
 @Component({
   selector: 'app-criar-evento',
@@ -11,21 +14,50 @@ import {SnotifyService} from "ng-snotify";
 })
 export class CriarEventoComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<any>,
+  public startDate: string
+  public endDate: string
+
+  constructor(public dialogRef: MatDialogRef<AgendaComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
               private loader: LoaderService,
-              private notify: SnotifyService) { }
+              private notify: SnotifyService,
+              private agendaService: AgendaService) { }
 
   cadastroForm: FormGroup
 
   ngOnInit(): void {
-    this.dialogRef.updateSize('40%', '60%');
+    this._formatarData()
+    this.dialogRef.updateSize('40%', '64%');
       this.cadastroForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
-      id: new FormControl('', [Validators.required]),
-      start: new  FormControl('', [Validators.required]),
-      end: new FormControl('', [Validators.required]),
-      quadra_id: new FormControl('', [Validators.required])
+      start: new  FormControl(this.startDate, [Validators.required]),
+      end: new  FormControl(this.endDate, [Validators.required]),
+      id_quadra: new FormControl('1', [Validators.required]),
+      color: new FormControl('purple', [Validators.required]),
+      description: new FormControl('', [Validators.required])
     })
+}
+
+  _formatarData(){
+    let dateObj = new Date(this.data.info.dateStr)
+    let dateString = dateObj.toLocaleString('pt-BR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute:'2-digit',
+    }).replace(/\//g, '-')
+    this.startDate = moment(dateString, 'DD/MM/YYYY HH:mm').format('YYYY-MM-DDTHH:mm')
+
+    dateObj.setTime(dateObj.getTime() + 1 * 60 * 60 * 1000).toString();
+    let dateString2 = dateObj.toLocaleString('pt-BR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute:'2-digit',
+    }).replace(/\//g, '-')
+    this.endDate = moment(dateString2, 'DD/MM/YYYY HH:mm').format('YYYY-MM-DDTHH:mm')
   }
 
   onSubmit() {
@@ -36,7 +68,16 @@ export class CriarEventoComponent implements OnInit {
       return
     }
 
-    console.log(this.cadastroForm.value);
+    this.cadastroForm.value.start += ':00'
+    this.cadastroForm.value.end += ':00'
+
+    this.agendaService.salvarPartida(this.cadastroForm.value).subscribe(data => {
+      if (data){
+        this.notify.success('Sucesso ao Cadastrar partida')
+      }
+    },error => console.error(error)),
+    this.loader.hide()
+    this.dialogRef.close()
   }
 
 }
