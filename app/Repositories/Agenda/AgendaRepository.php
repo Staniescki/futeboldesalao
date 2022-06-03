@@ -21,7 +21,7 @@ class AgendaRepository
 
     public function getHorarios()
     {
-        return $this->horarios_quadra->select('id', 'start', 'end', 'description', 'title', 'color')->get();
+        return $this->horarios_quadra->select('id', 'id_quadra','start', 'end', 'description', 'title', 'color')->get();
     }
 
     public function criarEvento($request)
