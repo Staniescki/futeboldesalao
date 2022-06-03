@@ -8,6 +8,7 @@ import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 import {AgendaService} from "../../services/agenda.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CriarEventoComponent} from "./criar-evento/criar-evento.component";
+import {EditarEventoComponent} from "./editar-evento/editar-evento.component";
 
 
 @Component({
@@ -46,15 +47,13 @@ export class AgendaComponent implements OnInit {
   loadEvents(): void {
     this.agendaService.getHorariosQuadra().subscribe((data) => {
       this.calendarOptions.events = data.horarios.map((item:any) => {
-        return {start: item.start, end: item.end, title: item.title, color:item.color, textColor:"white"}
+        return {start: item.start, id_quadra: item.id_quadra, end: item.end, title: item.title, color:item.color, textColor:"white", description: item.description}
       })
     })
   }
 
   handleEventClick(clickInfo: EventClickArg) {
-    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.id}'`)) {
-      clickInfo.event.remove();
-    }
+   this.dialog.open(EditarEventoComponent,{disableClose: true, height: '40%',width: '60%', data:{info: clickInfo}})
   }
 
   changeView(info: DateClickArg) {
@@ -67,5 +66,10 @@ export class AgendaComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadEvents()
+    this.agendaService.salvar.subscribe(data => {
+      if (data){
+        this.loadEvents()
+      }
+    })
   }
 }

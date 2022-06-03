@@ -43,6 +43,8 @@ import {LocalStorageService} from "./services/local-storage.service";
 import {JwtServiceService} from "./services/jwt-service.service";
 import {ForbiddenInterceptor} from "./services/interceptors/forbidden-interceptor";
 import { CriarEventoComponent } from './components/agenda/criar-evento/criar-evento.component';
+import { EditarEventoComponent } from './components/agenda/editar-evento/editar-evento.component';
+import {MatIconModule} from '@angular/material/icon'
 
 
 FullCalendarModule.registerPlugins([
@@ -69,12 +71,14 @@ FullCalendarModule.registerPlugins([
     EditarTimeComponent,
     PagamentoComponent,
     LoaderComponent,
-    CriarEventoComponent
+    CriarEventoComponent,
+    EditarEventoComponent
 
 
 
   ],
   imports: [
+    MatIconModule,
     SnotifyModule,
     BrowserModule,
     FormsModule,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Config} from "../config/main";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,8 @@ export class AgendaService {
    * Configurações do sistema.
    */
   private config: Config = new Config
+
+  public salvar: BehaviorSubject<any> = new BehaviorSubject<any>(null)
 
   constructor(private http: HttpClient) { }
 

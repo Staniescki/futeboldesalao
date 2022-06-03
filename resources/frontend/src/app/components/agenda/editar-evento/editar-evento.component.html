@@ -1,0 +1,50 @@
+<span class="d-flex justify-content-between">
+  <h1 mat-dialog-title>Edição de partida</h1>
+  <mat-icon aria-hidden="false" style="color:red">delete_forever</mat-icon>
+</span>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="editarForm">
+    <div class="row">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Titulo da Partida:</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Data da partida</mat-label>
+          <input matInput type="datetime-local" formControlName="start" >
+          <mat-datepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Quadra</mat-label>
+          <select matNativeControl readonly formControlName="id_quadra">
+            <option value="1">Arena 57</option>
+            <option value="2">Gauchinho</option>
+            <option value="3">Arena Intersul</option>
+            <option value="4">Unibol</option>
+          </select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input matInput #message maxlength="256" formControlName="description" placeholder="Inserir descrição da partida">
+        <mat-hint align="start"><strong>Descrição da partida</strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button type="button" class="btn btn-dark" mat-dialog-close>Fechar</button>
+  <button mat-button type="button" class="btn btn-success" [disabled]="!editarForm.valid" (click)="onSubmit()" >Salvar Alterações
+  </button>
+</mat-dialog-actions>
+
