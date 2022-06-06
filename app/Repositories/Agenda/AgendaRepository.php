@@ -35,4 +35,22 @@ class AgendaRepository
            'description' => $request->description
         ]);
     }
+
+    public function editarHorario($request)
+    {
+
+        return $this->horarios_quadra->where('id', $request->id)->update([
+            'title' => $request->title,
+            'start' => $request->start,
+            'end' => $request->end,
+            'id_quadra' => $request->id_quadra,
+            'color' => $request->color,
+            'description' => $request->description
+        ]);
+    }
+
+    public function excluirHorario($id)
+    {
+        return $this->horarios_quadra->where('id', $id)->delete();
+    }
 }

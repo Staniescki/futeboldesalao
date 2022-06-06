@@ -31,4 +31,16 @@ class AgendaController extends Controller
         $horarios = $this->agendaRepository->getHorarios();
         return response()->json(['horarios' => $horarios],200);
     }
+
+    public function editarHorario(Request $request)
+    {
+        $horarios = $this->agendaRepository->editarHorario($request);
+        return response()->json(['horarios' => $horarios], 200);
+    }
+
+    public function excluirHorario($id)
+    {
+        $horarios = $this->agendaRepository->excluirHorario($id);
+        return response()->json(['horarios' => $horarios], 200);
+    }
 }

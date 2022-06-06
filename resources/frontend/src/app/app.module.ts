@@ -26,7 +26,7 @@ import { CriarTimeComponent } from './components/criar-time/criar-time.component
 import { EstatisticasTimeComponent } from './components/estatisticas-time/estatisticas-time.component'
 import { PerfilTimeComponent } from './components/perfil-time/perfil-time.component'
 import {MatButtonModule} from '@angular/material/button'
-import {MatFormFieldModule} from '@angular/material/form-field'
+import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatNativeDateModule} from '@angular/material/core'
 import { MatInputModule } from '@angular/material/input'
 import { AgendaComponent } from './components/agenda/agenda.component'
@@ -45,6 +45,9 @@ import {ForbiddenInterceptor} from "./services/interceptors/forbidden-intercepto
 import { CriarEventoComponent } from './components/agenda/criar-evento/criar-evento.component';
 import { EditarEventoComponent } from './components/agenda/editar-evento/editar-evento.component';
 import {MatIconModule} from '@angular/material/icon'
+import {MatFormField} from "@angular/material/form-field";
+
+
 
 
 FullCalendarModule.registerPlugins([
@@ -78,6 +81,8 @@ FullCalendarModule.registerPlugins([
 
   ],
   imports: [
+    MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
     SnotifyModule,
     BrowserModule,
@@ -93,13 +98,11 @@ FullCalendarModule.registerPlugins([
     MatSliderModule,
     MatDatepickerModule,
     MatButtonModule,
-    MatFormFieldModule,
     MatNativeDateModule,
-    MatInputModule,
     MatDialogModule,
     HttpClientModule
   ],
-  exports:[NovoUsuarioComponent,MatDatepickerModule],
+  exports:[NovoUsuarioComponent,MatDatepickerModule, MatFormField],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

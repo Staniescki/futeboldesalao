@@ -29,11 +29,12 @@ export class EditarEventoComponent implements OnInit {
     this._formatarData()
     this.dialogRef.updateSize('40%', '66%');
     this.editarForm = new FormGroup({
+      id: new FormControl(this.data.info.event.id, [Validators.required]),
       title: new FormControl(this.data.info.event.title, [Validators.required]),
       start: new  FormControl(this.startDate, [Validators.required]),
       end: new  FormControl(this.endDate, [Validators.required]),
       id_quadra: new FormControl(this.data.info.event.extendedProps.id_quadra, [Validators.required]),
-      color: new FormControl('purple', [Validators.required]),
+      color: new FormControl(this.data.info.event.backgroundColor, [Validators.required]),
       description: new FormControl(this.data.info.event.extendedProps.description, [Validators.required])
     })
   }
@@ -48,7 +49,6 @@ export class EditarEventoComponent implements OnInit {
       minute:'2-digit',
     }).replace(/\//g, '-')
     this.startDate = moment(dateString, 'DD/MM/YYYY HH:mm').format('YYYY-MM-DDTHH:mm')
-    console.log(this.startDate)
 
     dateObj.setTime(dateObj.getTime() + 1 * 60 * 60 * 1000).toString();
     let dateString2 = dateObj.toLocaleString('pt-BR', {
@@ -62,6 +62,42 @@ export class EditarEventoComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loader.show()
+    if (!this.editarForm.valid){
+      this.notify.warning('Revisar Formulario! Preenchimento incorreto')
+      this.loader.hide()
+      return
+    }
+
+    this.editarForm.value.start += ':00'
+    this.editarForm.value.end += ':00'
+
+    this.agendaService.editarPartida(this.editarForm.value).subscribe(data => {
+      if (data) {
+        this.notify.success('Sucesso ao editar partida')
+        this.dialogRef.close()
+        this.data.info.view.calendar.changeView('dayGridMonth')
+        this.loader.hide()
+        this.agendaService.salvar.next(true)
+      }
+    }, error => console.error(error))
+
+  }
+
+  excluirEvento() {
+    if (confirm(`Deseja realmente excluir este evento?`)){
+      this.agendaService.excluirPartida(this.data.info.event.id).subscribe(data => {
+        if (data) {
+          this.notify.success('Sucesso ao excluir partida')
+          this.dialogRef.close()
+          this.data.info.view.calendar.changeView('dayGridMonth')
+          this.loader.hide()
+          this.agendaService.salvar.next(true)
+        }
+      }, error => console.error(error))
+
+    }
+
 
   }
 

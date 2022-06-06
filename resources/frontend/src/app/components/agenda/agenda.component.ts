@@ -9,7 +9,12 @@ import {AgendaService} from "../../services/agenda.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CriarEventoComponent} from "./criar-evento/criar-evento.component";
 import {EditarEventoComponent} from "./editar-evento/editar-evento.component";
+import {FormControl} from "@angular/forms";
 
+interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-agenda',
@@ -20,6 +25,15 @@ export class AgendaComponent implements OnInit {
 
   public eventos: any
   public eventSources: any;
+
+  selectedValue: string;
+  selectedCar: string;
+
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
 
   constructor(private agendaService: AgendaService,
               public dialog: MatDialog) { }
@@ -47,7 +61,7 @@ export class AgendaComponent implements OnInit {
   loadEvents(): void {
     this.agendaService.getHorariosQuadra().subscribe((data) => {
       this.calendarOptions.events = data.horarios.map((item:any) => {
-        return {start: item.start, id_quadra: item.id_quadra, end: item.end, title: item.title, color:item.color, textColor:"white", description: item.description}
+        return { id: item.id, start: item.start, id_quadra: item.id_quadra, end: item.end, title: item.title, color:item.color, textColor:"white", description: item.description}
       })
     })
   }

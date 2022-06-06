@@ -25,4 +25,12 @@ export class AgendaService {
     return this.http.post(this.config.get('urlServiceBackend') + 'agenda/criar', data)
   }
 
+  editarPartida(data: any): Observable<any> {
+    return this.http.post(this.config.get('urlServiceBackend') + `agenda/editar`, data)
+  }
+
+  excluirPartida(id: any): Observable<any> {
+    return this.http.delete(this.config.get('urlServiceBackend') + `agenda/deletar/${id}`)
+  }
+
 }

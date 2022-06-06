@@ -1,6 +1,6 @@
 <span class="d-flex justify-content-between">
   <h1 mat-dialog-title>Edição de partida</h1>
-  <mat-icon aria-hidden="false" style="color:red">delete_forever</mat-icon>
+  <a (click)="excluirEvento()"><mat-icon aria-hidden="false" style="color:#da2929cc;">delete_forever</mat-icon></a>
 </span>
 <mat-dialog-content class="mat-typography">
   <form [formGroup]="editarForm">
