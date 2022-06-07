@@ -22,7 +22,7 @@ export class AgendaService {
   }
 
   salvarPartida(data: any): Observable<any> {
-    return this.http.post(this.config.get('urlServiceBackend') + 'agenda/criar', data)
+    return this.http.post( 'agenda/criar', data)
   }
 
   editarPartida(data: any): Observable<any> {

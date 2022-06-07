@@ -46,6 +46,7 @@ import { CriarEventoComponent } from './components/agenda/criar-evento/criar-eve
 import { EditarEventoComponent } from './components/agenda/editar-evento/editar-evento.component';
 import {MatIconModule} from '@angular/material/icon'
 import {MatFormField} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -100,7 +101,8 @@ FullCalendarModule.registerPlugins([
     MatButtonModule,
     MatNativeDateModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
   ],
   exports:[NovoUsuarioComponent,MatDatepickerModule, MatFormField],
   providers: [
