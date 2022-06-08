@@ -24,10 +24,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Quadra</mat-label>
           <select matNativeControl readonly formControlName="id_quadra">
-            <option value="1">Arena 57</option>
-            <option value="2">Gauchinho</option>
-            <option value="3">Arena Intersul</option>
-            <option value="4">Unibol</option>
+            <option value="{{data.info.event.extendedProps.id_quadra}}">{{data.quadra}}</option>
           </select>
         </mat-form-field>
       </div>

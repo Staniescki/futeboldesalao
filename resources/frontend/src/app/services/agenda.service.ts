@@ -17,12 +17,12 @@ export class AgendaService {
 
   constructor(private http: HttpClient) { }
 
-  getHorariosQuadra(): Observable<any>{
-    return this.http.get(this.config.get('urlServiceBackend') + 'agenda/horarios')
+  getHorariosQuadra(id: any): Observable<any>{
+    return this.http.get(this.config.get('urlServiceBackend') + `agenda/horarios/${id}`)
   }
 
   salvarPartida(data: any): Observable<any> {
-    return this.http.post( 'agenda/criar', data)
+    return this.http.post(this.config.get('urlServiceBackend') + 'agenda/criar', data)
   }
 
   editarPartida(data: any): Observable<any> {

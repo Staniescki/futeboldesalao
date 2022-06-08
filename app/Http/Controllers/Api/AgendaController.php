@@ -26,9 +26,9 @@ class AgendaController extends Controller
 
     }
 
-    public function horarios()
+    public function horarios($id)
     {
-        $horarios = $this->agendaRepository->getHorarios();
+        $horarios = $this->agendaRepository->getHorarios($id);
         return response()->json(['horarios' => $horarios],200);
     }
 

@@ -19,9 +19,9 @@ class AgendaRepository
         $this->horarios_quadra = new HorariosQuadra();
     }
 
-    public function getHorarios()
+    public function getHorarios($id)
     {
-        return $this->horarios_quadra->select('id', 'id_quadra','start', 'end', 'description', 'title', 'color')->get();
+        return $this->horarios_quadra->where('id_quadra', $id)->select('id', 'id_quadra','start', 'end', 'description', 'title', 'color')->get();
     }
 
     public function criarEvento($request)

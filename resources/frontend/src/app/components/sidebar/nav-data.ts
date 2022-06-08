@@ -1,5 +1,10 @@
 export const navbarData = [
   {
+    routerLink: 'home',
+    icon: 'fa-solid fa-house',
+    label: 'Pagina Principal',
+  },
+  {
     routerLink: 'novo-usuario',
     icon: 'fa-solid fa-square-plus',
     label: 'Criar Jogador',
@@ -25,7 +30,7 @@ export const navbarData = [
     label: 'Perfil do Time',
   },
   {
-    routerLink: 'agenda',
+    routerLink: 'agenda/0',
     icon: 'fa-solid fa-calendar-days',
     label: 'Agenda',
   },

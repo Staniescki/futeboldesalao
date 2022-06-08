@@ -22,10 +22,9 @@ export class CriarTimeComponent implements OnInit {
       fundacao_time: ['', Validators.required],
     });
   }
-
-  get emailFormEx() {
-    return this.validationForm.get('emailFormEx');
-  }
+onSubmit() {
+    console.log(this.validationForm.value)
+}
 
 
 }

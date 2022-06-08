@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
        this.notify.error("Ocorreu um erro ao resgatar permissoes")
     })
     if (redirect) {
-      this.router.navigateByUrl('/novo-usuario');
+      this.router.navigateByUrl('/home');
     }
      this.notify.success('Autenticado com sucesso!')
   }

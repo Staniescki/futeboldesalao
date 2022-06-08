@@ -26,11 +26,14 @@ Route::group(['middleware' => ['apiJwt']], function (){
         Route::get('users', 'UserController@index');
     });
     Route::group(['prefix' => 'agenda', 'namespace' => 'Api'], function () {
-       Route::get('horarios', 'AgendaController@horarios');
+       Route::get('horarios/{id}', 'AgendaController@horarios');
        Route::post('criar', 'AgendaController@criarHorario');
        Route::post('editar','AgendaController@editarHorario');
        Route::delete('deletar/{id}', 'AgendaController@excluirHorario');
     });
-
+    Route::group(['prefix' => 'quadra', 'namespace' => 'Api'], function () {
+       Route::get('listar', 'QuadraController@listar');
+    });
 });
+
 

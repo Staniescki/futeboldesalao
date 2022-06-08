@@ -6,7 +6,7 @@ import {SnotifyService} from "ng-snotify";
 import {AgendaComponent} from "../agenda.component";
 import * as moment from 'moment';
 import {AgendaService} from "../../../services/agenda.service";
-import {Route, Router} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-criar-evento',
@@ -23,7 +23,7 @@ export class CriarEventoComponent implements OnInit {
               private loader: LoaderService,
               private notify: SnotifyService,
               private agendaService: AgendaService,
-              private route: Router) { }
+              private route: ActivatedRoute) { }
 
   cadastroForm: FormGroup
 
@@ -34,7 +34,7 @@ export class CriarEventoComponent implements OnInit {
       title: new FormControl('', [Validators.required]),
       start: new  FormControl(this.startDate, [Validators.required]),
       end: new  FormControl(this.endDate, [Validators.required]),
-      id_quadra: new FormControl('1', [Validators.required]),
+      id_quadra: new FormControl(this.data.id_quadra, [Validators.required]),
       color: new FormControl('purple', [Validators.required]),
       description: new FormControl('', [Validators.required])
     })

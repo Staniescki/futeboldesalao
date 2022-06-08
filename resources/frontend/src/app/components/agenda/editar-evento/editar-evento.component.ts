@@ -26,6 +26,7 @@ export class EditarEventoComponent implements OnInit {
   public endDate: string
 
   ngOnInit(): void {
+    console.log(this.data)
     this._formatarData()
     this.dialogRef.updateSize('40%', '66%');
     this.editarForm = new FormGroup({

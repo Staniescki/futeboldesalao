@@ -1,17 +1,21 @@
+<div class="row">
+  <div class="col-2">
+    <div class="quadra pt-5 ml-5">
+      <h4>Horarios:</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione a quadra</mat-label>
+        <mat-select (valueChange)="alterarQuadraSelecionada($event)"  name="quadras">
+          <mat-option *ngFor="let quadra of quadras; let i = index" [value]="quadra.nome_quadra">
+            {{quadra.nome_quadra}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="col">
+    <section class="d-flex justify-content-center align-itens-center">
+      <full-calendar class="calendar" [options]="calendarOptions"></full-calendar>
+    </section>
+  </div>
+</div>
 
-  <h4>mat-select</h4>
-  <mat-form-field appearance="fill">
-    <mat-label>Favorite food</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="food">
-      <mat-option  *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <p> Selected food: {{selectedValue}} </p>
-
-
-
-<section class="d-flex justify-content-center align-itens-center">
-  <full-calendar class="calendar" [options]="calendarOptions"></full-calendar>
-</section>

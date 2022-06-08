@@ -10,16 +10,19 @@ import {CriarTimeComponent} from "./components/criar-time/criar-time.component";
 import {PerfilTimeComponent} from "./components/perfil-time/perfil-time.component";
 import {AgendaComponent} from "./components/agenda/agenda.component";
 import {PagamentoComponent} from "./components/pagamento/pagamento.component";
+import {HomeComponent} from "./components/home/home.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "", pathMatch: "full"},
+  {path: "", redirectTo: "HomeComponent", pathMatch: "full"},
+  {path: "home", component:HomeComponent},
   {path: "novo-usuario", component:NovoUsuarioComponent},
   {path: "perfil-jogador", component:PerfilJogadorComponent},
   {path: "estatisticas-jogador", component:EstatisticasJogadorComponent},
   {path: "estatisticas-time", component:EstatisticasTimeComponent},
   {path: "novo-time", component:CriarTimeComponent},
   {path: "perfil-time", component:PerfilTimeComponent},
-  {path: "agenda", component:AgendaComponent},
+  {path: "agenda/:id", component:AgendaComponent},
   {path: "login", component:LoginComponent},
   {path: "pagamento", component:PagamentoComponent},
 ];
