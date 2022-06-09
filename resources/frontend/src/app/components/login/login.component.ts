@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
 
     this.token.autenticacaoExpirada.subscribe((expirado) => {
       if(expirado) {
-        console.log('Expirado irmao')
+        this.router.navigateByUrl('/login')
       }
     })
 

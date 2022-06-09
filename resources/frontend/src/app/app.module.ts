@@ -48,8 +48,6 @@ import {MatIconModule} from '@angular/material/icon'
 import {MatFormField} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import { HomeComponent } from './components/home/home.component';
-import {ActivatedRoute}  from "@angular/router";
-
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
