@@ -30,7 +30,6 @@ export class JwtServiceService {
   logout() {
     this.tokenService.remove()
     this.authService.changeAuthStatus(false)
-    /*this.empresaService.empresaSelecionada.next(null)*/
     this.localStorageService.remove('token')
     this.localStorageService.remove('empresa')
     this.localStorageService.set('usuario', null)

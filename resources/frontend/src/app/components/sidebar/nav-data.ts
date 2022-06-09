@@ -30,7 +30,7 @@ export const navbarData = [
     label: 'Perfil do Time',
   },
   {
-    routerLink: 'agenda/0',
+    routerLink: 'agenda/1',
     icon: 'fa-solid fa-calendar-days',
     label: 'Agenda',
   },

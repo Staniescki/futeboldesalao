@@ -29,4 +29,10 @@ class Quadra extends Model
     public $timestamps = false;
 
     ############################# RELACIONAMENTOS ######################
+
+
+    public function horariosQuadra()
+    {
+        return $this->hasMany('App\Models\HorariosQuadra', 'id_quadra', 'id_quadra');
+    }
 }

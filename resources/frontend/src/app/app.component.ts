@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from "./services/login.service";
+import {TokenService} from "./services/token.service";
 
 interface SideNavToggle {
   screenWidth: number
@@ -26,10 +27,11 @@ export class AppComponent{
 
   mostrarMenu: boolean = false
 
-  constructor(private login: LoginService) {
+  constructor(private login: LoginService, public tokenService: TokenService) {
   }
 
   ngOnInit(){
+    this.tokenService.verificarValidadeToken()
     this.login.mostrarMenu.subscribe(
       response => this.mostrarMenu = response
     );

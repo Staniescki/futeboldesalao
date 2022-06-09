@@ -28,6 +28,7 @@ export class CriarEventoComponent implements OnInit {
   cadastroForm: FormGroup
 
   ngOnInit(): void {
+    console.log(this.data)
     this._formatarData()
     this.dialogRef.updateSize('40%', '66%');
       this.cadastroForm = new FormGroup({

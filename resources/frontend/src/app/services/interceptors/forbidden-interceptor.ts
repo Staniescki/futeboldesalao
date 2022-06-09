@@ -24,7 +24,7 @@ export class ForbiddenInterceptor implements HttpInterceptor {
         },
         (error: any) => {
           if (error.status == 403) {
-            this.notify.error(`Seu usuário não possui permissão para acessar este recurso. Dúvidas? Contate o suporte Target.IT`, {
+            this.notify.error(`Seu usuário não possui permissão para acessar este recurso.`, {
               showProgressBar: false,
               timeout: 0,
               closeOnClick: true,

@@ -28,4 +28,11 @@ class HorariosQuadra extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    ##################### RELACIONAMENTOS #####################
+
+    public function quadra()
+    {
+        return $this->belongsTo('App\Models\Quadra', 'id_quadra', 'id_quadra');
+    }
 }

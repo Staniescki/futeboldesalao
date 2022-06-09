@@ -74,7 +74,7 @@ export class AgendaComponent implements OnInit {
     if(info.view.type == 'dayGridMonth') {
       info.view.calendar.changeView('timeGridDay',info.dateStr)
     }else{
-      this.dialog.open(CriarEventoComponent, {disableClose: true, height: '40%',width: '60%', data:{info: info, id_quadra:this.id_quadra, quadras: this.quadra_selecionada}})
+      this.dialog.open(CriarEventoComponent, {disableClose: true, height: '40%',width: '60%', data:{info: info, id_quadra: this.activeRoute.snapshot.params['id'], quadras: this.quadra_selecionada}})
     }
   }
 
@@ -99,6 +99,8 @@ export class AgendaComponent implements OnInit {
   alterarQuadraSelecionada(data: any) {
     let id = data === 'Gauchinho' ? 1 : data === 'Arena 57' ? 2 : data === 'Quadra Unibol' ? 3 : 0
     this.quadra_selecionada = id === 1 ? 'Gauchinho' : id === 2 ? 'Arena 57' : id === 3 ? 'Quadra Unibol' : 'Quadra Invalida'
+    console.log(this.quadra_selecionada)
+    console.log(id)
     this.router.navigateByUrl(`/agenda/${id}`)
     this.loadEvents(id)
   }

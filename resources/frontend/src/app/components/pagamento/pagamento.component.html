@@ -10,16 +10,14 @@
             <div class="row">
               <div id="image" class="col">
                 <div class="md-form">
-                  <div class="md-form">
-                    <select class="browser-default custom-select" for="posicao" id="posicao" mdbValidate formControlName="posicao">
-                      <option value="" readonly="true" hidden="true" selected>Selecionar Posição</option>
-                      <option value="goleiro">Goleiro</option>
-                      <option value="ala-direita">Ala-direita</option>
-                      <option value="ala-esquerda">Ala-esquerda</option>
-                      <option value="fixo">Fixo</option>
-                      <option value="pivo">Pivô</option>
-                    </select>
-                  </div>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Selecione o pix</mat-label>
+                    <mat-select name="quadras">
+                      <mat-option *ngFor="let quadra of quadras; let i = index" [value]="quadra.nome_quadra">
+                        {{quadra.nome_quadra}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
             </div>

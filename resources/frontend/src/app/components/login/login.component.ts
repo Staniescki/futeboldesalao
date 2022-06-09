@@ -25,6 +25,16 @@ export class LoginComponent implements OnInit {
   errorMessage: string
 
   /**
+   * Elemento Body
+   */
+  private elementBody: any
+
+  /**
+   * Define se o CAPS LOCK está ligado.
+   */
+  public capsLockLigado: boolean
+
+  /**
    * Status de erro.
    */
   errorStatus: number
@@ -49,6 +59,15 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     })
+
+
+    this.token.autenticacaoExpirada.subscribe((expirado) => {
+      if(expirado) {
+        console.log('Expirado irmao')
+      }
+    })
+
+
   }
 
   onSubmit() {
@@ -78,10 +97,7 @@ export class LoginComponent implements OnInit {
     this.auth.changeAuthStatus(true)
     this.localStorageService.set('current_user', data.current_user)
     this.userService.getUser().subscribe((response: any) => {
-      this.localStorageService.set('usuario', response.data.usuario)
-      /*this.localStorageService.set('permissoes', response.data.usuario.permissoes)
-      this.localStorageService.set('permissoesTotais', response.data.usuario.permissoesTotais)*/
-      this.localStorageService.set('encode_expiry', data.data.encode.expiry)
+    this.localStorageService.set('usuario', response)
     }, (error: any) => {
        this.notify.error("Ocorreu um erro ao resgatar permissoes")
     })
