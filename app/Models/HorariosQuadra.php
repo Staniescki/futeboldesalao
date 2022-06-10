@@ -16,7 +16,7 @@ class HorariosQuadra extends Model
      * Lista de colunas Existentes na tabela
      * @var string[]
      */
-    protected $fillable = ['id', 'start', 'end', 'description', 'title', 'id_quadra', 'color'];
+    protected $fillable = ['id', 'start', 'end', 'description', 'title', 'id_quadra', 'color', 'id_usuario'];
 
     /**
      * @var int Tabela primaria da tabela

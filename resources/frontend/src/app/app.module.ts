@@ -48,6 +48,7 @@ import {MatIconModule} from '@angular/material/icon'
 import {MatFormField} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import { HomeComponent } from './components/home/home.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -81,6 +82,7 @@ FullCalendarModule.registerPlugins([
 
   ],
   imports: [
+    MatTooltipModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,

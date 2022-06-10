@@ -1,6 +1,6 @@
 <span class="d-flex justify-content-between">
   <h1 mat-dialog-title>Edição de partida</h1>
-  <a (click)="excluirEvento()"><mat-icon aria-hidden="false" style="color:#da2929cc;">delete_forever</mat-icon></a>
+  <a *ngIf="data.info.event.extendedProps.id_usuario == data.usuario.id; else permissao" (click)="excluirEvento()"><mat-icon aria-hidden="false" style="color:#da2929cc;">delete_forever</mat-icon></a>
 </span>
 <mat-dialog-content class="mat-typography">
   <form [formGroup]="editarForm">
@@ -44,4 +44,13 @@
   <button mat-button type="button" class="btn btn-success" [disabled]="!editarForm.valid" (click)="onSubmit()" >Salvar Alterações
   </button>
 </mat-dialog-actions>
+
+<ng-template #permissao>
+  <button mat-raised-button
+          matTooltip="Sem permissao para excluir"
+          matTooltipClass="example-tooltip-red"
+          class="example-button" style="box-shadow: none">
+    <mat-icon aria-hidden="false" style="color:#da2929cc;">delete_forever</mat-icon>
+  </button>
+</ng-template>
 

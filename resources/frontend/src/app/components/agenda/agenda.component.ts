@@ -11,6 +11,7 @@ import {CriarEventoComponent} from "./criar-evento/criar-evento.component";
 import {EditarEventoComponent} from "./editar-evento/editar-evento.component";
 import {ActivatedRoute, Router} from "@angular/router";
 import {QuadraService} from "../../services/quadra.service";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 @Component({
   selector: 'app-agenda',
@@ -20,6 +21,8 @@ import {QuadraService} from "../../services/quadra.service";
 export class AgendaComponent implements OnInit {
 
   public eventos: any
+
+  public usuario: any
 
   public eventSources: any;
 
@@ -35,7 +38,8 @@ export class AgendaComponent implements OnInit {
               public dialog: MatDialog,
               private activeRoute: ActivatedRoute,
               private quadraService: QuadraService,
-              private router: Router) {
+              private router: Router,
+              private localStore: LocalStorageService) {
   }
 
 
@@ -61,26 +65,29 @@ export class AgendaComponent implements OnInit {
   loadEvents(id_quadra: any): void {
     this.agendaService.getHorariosQuadra(id_quadra).subscribe((data) => {
       this.calendarOptions.events = data.horarios.map((item:any) => {
-        return { id: item.id, start: item.start, id_quadra: item.id_quadra, end: item.end, title: item.title, color:item.color, textColor:"white", description: item.description}
+        return { id: item.id, start: item.start,id_usuario: item.id_usuario, id_quadra: item.id_quadra, end: item.end, title: item.title, color:item.color, textColor:"white", description: item.description}
       })
     })
   }
 
   handleEventClick(clickInfo: EventClickArg) {
-   this.dialog.open(EditarEventoComponent,{disableClose: true, height: '40%',width: '60%', data:{info: clickInfo, quadra: this.quadra_selecionada}})
+   this.dialog.open(EditarEventoComponent,{disableClose: true, height: '40%',width: '60%', data:{info: clickInfo, quadra: this.quadra_selecionada, usuario: this.usuario}})
   }
 
   changeView(info: DateClickArg) {
     if(info.view.type == 'dayGridMonth') {
       info.view.calendar.changeView('timeGridDay',info.dateStr)
     }else{
-      this.dialog.open(CriarEventoComponent, {disableClose: true, height: '40%',width: '60%', data:{info: info, id_quadra: this.activeRoute.snapshot.params['id'], quadras: this.quadra_selecionada}})
+      this.dialog.open(CriarEventoComponent, {disableClose: true, height: '40%',width: '60%', data:{info: info, id_quadra: this.activeRoute.snapshot.params['id'], quadras: this.quadra_selecionada, usuario: this.usuario}})
     }
   }
 
 
 
   ngOnInit(): void {
+
+    this.usuario = this.localStore.get('usuario')
+
     this.quadraService.getQuadras().subscribe(data => {
       if (data) {
         this.quadras = data.quadras

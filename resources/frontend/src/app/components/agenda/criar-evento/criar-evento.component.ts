@@ -36,6 +36,7 @@ export class CriarEventoComponent implements OnInit {
       start: new  FormControl(this.startDate, [Validators.required]),
       end: new  FormControl(this.endDate, [Validators.required]),
       id_quadra: new FormControl(this.data.id_quadra, [Validators.required]),
+      id_usuario: new FormControl(this.data.usuario.id, [Validators.required]),
       color: new FormControl('purple', [Validators.required]),
       description: new FormControl('', [Validators.required])
     })

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AgendaComponent} from "../agenda.component";
@@ -10,7 +10,8 @@ import * as moment from "moment";
 @Component({
   selector: 'app-editar-evento',
   templateUrl: './editar-evento.component.html',
-  styleUrls: ['./editar-evento.component.scss']
+  styleUrls: ['./editar-evento.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class EditarEventoComponent implements OnInit {
 
