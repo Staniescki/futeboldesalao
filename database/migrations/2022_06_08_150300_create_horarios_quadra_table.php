@@ -15,8 +15,8 @@ class CreateHorariosQuadraTable extends Migration
     {
         Schema::create('horarios_quadra', function (Blueprint $table) {
             $table->id();
-            $table->string('id_quadra');
-            $table->string('id_usuario');
+            $table->bigInteger('id_quadra');
+            $table->bigInteger('id_usuario');
             $table->dateTime('start');
             $table->dateTime('end');
             $table->string('description');
