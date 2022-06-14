@@ -34,6 +34,9 @@ Route::group(['middleware' => ['apiJwt']], function (){
     Route::group(['prefix' => 'quadra', 'namespace' => 'Api'], function () {
        Route::get('listar', 'QuadraController@listar');
     });
+    Route::group(['prefix' => 'usuario', 'namespace' => 'Api'], function () {
+       Route::get('buscar/{id}', 'JogadorController@buscar');
+    });
 });
 
 

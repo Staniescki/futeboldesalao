@@ -106,8 +106,6 @@ export class AgendaComponent implements OnInit {
   alterarQuadraSelecionada(data: any) {
     let id = data === 'Gauchinho' ? 1 : data === 'Arena 57' ? 2 : data === 'Quadra Unibol' ? 3 : 0
     this.quadra_selecionada = id === 1 ? 'Gauchinho' : id === 2 ? 'Arena 57' : id === 3 ? 'Quadra Unibol' : 'Quadra Invalida'
-    console.log(this.quadra_selecionada)
-    console.log(id)
     this.router.navigateByUrl(`/agenda/${id}`)
     this.loadEvents(id)
   }

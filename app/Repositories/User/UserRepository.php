@@ -64,7 +64,15 @@ class UserRepository
        $user = $this->users->create($usuario);
        $user->enderecoUsuario()->create($endereco);
        $user->jogadores()->create($jogador);
+       return $user;
 
     }
+
+    public function buscarUsuario($id)
+    {
+        return $this->users->with(['enderecoUsuario', 'jogadores'])->where('id', $id)->get();
+    }
+
+
 
 }

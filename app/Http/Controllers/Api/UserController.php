@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Usuarios;
+use Illuminate\Http\Response;
 use App\Repositories\User\UserRepository;
 use App\User;
 use Illuminate\Http\Request;
@@ -78,7 +78,7 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-        $this->userRepository->createUser($request);
-        return response()->json(['message' => 'Usuario cadastrado com sucesso'], 200);
+        $user = $this->userRepository->createUser($request);
+        return \response()->json(['user' => $user], 200);
     }
 }

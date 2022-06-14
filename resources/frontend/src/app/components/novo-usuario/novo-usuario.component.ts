@@ -78,6 +78,7 @@ export class NovoUsuarioComponent implements OnInit {
     }
 
     this.userService.createUser(this.formulario.value).subscribe(response => {
+
       this.loader.hide()
       this.handlerResponse(response)
     }, error => this.notify.error(error))
@@ -111,8 +112,8 @@ export class NovoUsuarioComponent implements OnInit {
   }
 
   handlerResponse(data: any){
-    if(data.code == '200'){
-      this.notify.success(data.message)
+    if(data.status == '200'){
+      this.notify.success('Usuario Cadastrado com sucesso');
     }
     if (data.code == '210'){
       this.notify.warning('Email ja utilizado, favor revisar!')

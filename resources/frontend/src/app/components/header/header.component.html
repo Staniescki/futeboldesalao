@@ -28,7 +28,7 @@
 
     <div class="navbar-collapse collapse" id="navbar_global-2">
 
-    <div>
+    <div  *ngIf="!tokenService.loggedIn()">
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
           <li class="nav-item">
             <span class="navbar-brand nav-link-inner--text entrar-como">ENTRAR: </span>
@@ -39,14 +39,19 @@
               <span class="nav-link-inner--text"> JOGADOR</span>
             </button>
           </li>
-          <!--<li class="nav-item d-none d-lg-block">
-            <button class="btn btn-outline-dark" [routerLink]="'/login'">
-                <span class="btn-inner&#45;&#45;icon">
-                  <span class="btn-inner&#45;&#45;icon"><img class="img" src="/assets/img/icons/common/carrinho.png"></span>
+        </ul>
+      </div>
+      <div  *ngIf="tokenService.loggedIn()">
+        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+          <li class="nav-item">
+            <span class="navbar-brand nav-link-inner--text entrar-como">Usuario: {{localStorage.get('usuario').name}}</span>
+            <button class="btn btn-outline-dark" (click)="jwtService.logout()">
+              <span class="btn-inner--icon">
+                  <span class="btn-inner--icon"><img class="img" src="/assets/img/icons/common/entrar.png"></span>
                 </span>
-              <span class="nav-link-inner&#45;&#45;text"> QUADRA</span>
+              <span class="nav-link-inner--text"> SAIR </span>
             </button>
-          </li>-->
+          </li>
         </ul>
       </div>
     </div>

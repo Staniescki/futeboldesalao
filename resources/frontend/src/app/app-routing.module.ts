@@ -12,12 +12,13 @@ import {AgendaComponent} from "./components/agenda/agenda.component";
 import {PagamentoComponent} from "./components/pagamento/pagamento.component";
 import {HomeComponent} from "./components/home/home.component";
 import {AfterLoginService} from "./services/after-login.service";
+import {PerfilResolver} from "./resolver/perfil.resolver";
 
 const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: "full"},
   {path: "home", component:HomeComponent,canActivate: [AfterLoginService]},
   {path: "novo-usuario", component:NovoUsuarioComponent, canActivate: [AfterLoginService]},
-  {path: "perfil-jogador", component:PerfilJogadorComponent, canActivate: [AfterLoginService]},
+  {path: "perfil-jogador", component:PerfilJogadorComponent, canActivate: [AfterLoginService], resolve: {usuario: PerfilResolver}},
   {path: "estatisticas-jogador", component:EstatisticasJogadorComponent, canActivate: [AfterLoginService]},
   {path: "estatisticas-time", component:EstatisticasTimeComponent, canActivate: [AfterLoginService]},
   {path: "novo-time", component:CriarTimeComponent, canActivate: [AfterLoginService]},

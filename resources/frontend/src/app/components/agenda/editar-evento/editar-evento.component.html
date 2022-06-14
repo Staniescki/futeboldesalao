@@ -1,5 +1,6 @@
 <span class="d-flex justify-content-between">
-  <h1 mat-dialog-title>Edição de partida</h1>
+  <h1 *ngIf="data.info.event.extendedProps.id_usuario == data.usuario.id" mat-dialog-title>Edição de partida</h1>
+  <h1 *ngIf="data.info.event.extendedProps.id_usuario != data.usuario.id" mat-dialog-title>Visualizar partida</h1>
   <a *ngIf="data.info.event.extendedProps.id_usuario == data.usuario.id; else permissao" (click)="excluirEvento()"><mat-icon aria-hidden="false" style="color:#da2929cc;">delete_forever</mat-icon></a>
 </span>
 <mat-dialog-content class="mat-typography">
@@ -41,7 +42,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button type="button" class="btn btn-dark" mat-dialog-close>Fechar</button>
-  <button mat-button type="button" class="btn btn-success" [disabled]="!editarForm.valid" (click)="onSubmit()" >Salvar Alterações
+  <button *ngIf="data.info.event.extendedProps.id_usuario == data.usuario.id; else salvarAlteracoes" mat-button type="button" class="btn btn-success" [disabled]="!editarForm.valid" (click)="onSubmit()" >Salvar Alterações
   </button>
 </mat-dialog-actions>
 
@@ -51,6 +52,15 @@
           matTooltipClass="example-tooltip-red"
           class="example-button" style="box-shadow: none">
     <mat-icon aria-hidden="false" style="color:#da2929cc;">delete_forever</mat-icon>
+  </button>
+</ng-template>
+
+<ng-template #salvarAlteracoes>
+  <button
+    mat-raised-button
+    matTooltip="Sem permissao para alterar"
+    matTooltipClass="example-tooltip-red"
+    class="example-button" style="box-shadow: none" type="button" class="btn btn-success"  >Salvar Alterações
   </button>
 </ng-template>
 

@@ -26,7 +26,6 @@ export class AfterLoginService implements CanActivate {
     state: RouterStateSnapshot
     ): boolean | Observable<boolean> | Promise<boolean> {
 
-console.log(!this.tokenService.loggedIn())
     if (!this.tokenService.loggedIn()) {
       this.router.navigateByUrl('/login')
     }
