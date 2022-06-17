@@ -26,7 +26,7 @@ class AddCollumsToJogadoresTable extends Migration
     public function down()
     {
         Schema::table('jogadores', function (Blueprint $table) {
-            //
+            $table->dropColumn('imgjogador');
         });
     }
 }
