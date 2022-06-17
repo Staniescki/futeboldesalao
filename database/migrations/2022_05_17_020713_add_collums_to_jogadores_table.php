@@ -14,7 +14,7 @@ class AddCollumsToJogadoresTable extends Migration
     public function up()
     {
         Schema::table('jogadores', function (Blueprint $table) {
-            $table->longText('imgjogador');
+            $table->longText('imgjogador')->nullable();
         });
     }
 
