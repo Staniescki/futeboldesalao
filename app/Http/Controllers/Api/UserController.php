@@ -81,4 +81,10 @@ class UserController extends Controller
         $user = $this->userRepository->createUser($request);
         return \response()->json(['user' => $user], 200);
     }
+
+    public function updateUser(Request $request)
+    {
+        $user = $this->userRepository->updateUsuario($request);
+        return \response()->json(['user' => $user], 200);
+    }
 }

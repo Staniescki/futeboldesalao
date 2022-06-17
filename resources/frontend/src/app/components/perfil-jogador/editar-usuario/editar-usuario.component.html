@@ -1,213 +1,133 @@
-<h2 mat-dialog-title>Editar informações de usuario</h2>
+<h2 mat-dialog-title>Editar informações</h2>
 <mat-dialog-content class="mat-typography">
-  <div class="col-lg-8" id="div">
-    <div class="card mb-8">
-      <div class="card-body">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a [ngClass]="{active: abaSelected=='home'}" (click)="changeAbaSelected('home')" class="nav-link active"
-               id="pills-home-tab" data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true">Dados
-              Pessoais</a>
-          </li>
-          <li class="nav-item">
-            <a [ngClass]="{active: abaSelected=='profile'}" (click)="changeAbaSelected('profile')" class="nav-link"
-               id="pills-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-profile"
-               aria-selected="false">Endereço</a>
-          </li>
-          <li class="nav-item">
-            <a [ngClass]="{active: abaSelected=='contato'}" (click)="changeAbaSelected('contato')" class="nav-link"
-               id="pills-contact-tab" data-toggle="pill" role="tab" aria-controls="pills-contact"
-               aria-selected="false">Contato</a>
-          </li>
-        </ul>
-        <form [formGroup]="formulario">
-          <div class="tab-content" id="pills-tabContent">
-            <!--ABA DE DADOS PESSOAIS-->
-            <div [ngClass]="{'show active': abaSelected=='home'}" (click)="changeAbaSelected('home')"
-                 class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-              <div class="md-form">
-                <mdb-icon fas icon="user-alt" class="prefix"></mdb-icon>
-                <input mdbInput  mdbValidate type="text" id="nome" class="form-control" formControlName="nome_completo">
-                <label for="nome">Nome Completo</label>
-              </div>
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="user-secret" class="prefix"></mdb-icon>
-                    <input mdbInput mdbValidate formControlName="apelido" type="text" id="apelido" class="form-control">
-                    <label for="apelido">Apelido</label>
-                  </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                  <div class="md-form">
-                    <mat-form-field class="example-full-width">
-                      <mat-label>Data de Nascimento</mat-label>
-                      <input matInput  mdbValidate formControlName="data_nascimento" [matDatepicker]="picker">
-                      <!--<mat-hint>MM/DD/YYYY</mat-hint>
-                      Serve para colocar um placeholder
-                      -->
-                      <mat-datepicker-toggle matSuffix [for]="picker">
-                      </mat-datepicker-toggle>
-                      <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                  </div>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form">
-                    <select class="browser-default custom-select" for="posicao" id="posicao" mdbValidate formControlName="posicao">
-                      <option value="" readonly="true" hidden="true" selected>Selecionar Posição</option>
-                      <option value="goleiro">Goleiro</option>
-                      <option value="ala-direita">Ala-direita</option>
-                      <option value="ala-esquerda">Ala-esquerda</option>
-                      <option value="fixo">Fixo</option>
-                      <option value="pivo">Pivô</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="md-form">
-                    <select class="browser-default custom-select" id="sexo" for="sexo" mdbValidate formControlName="sexo">
-                      <option value="" readonly="true" hidden="true" selected>Sexo:</option>
-                      <option value="1">Masculino</option>
-                      <option value="2">Feminino</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="shoe-prints" class="prefix"></mdb-icon>
-                    <input mdbInput type="text" id="pe_preferido" class="form-control" mdbValidate formControlName="pe_preferido">
-                    <label for="pe_preferido">Pé-Preferido</label>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="md-form">
-                    <input type="number" class="form-control" id="idade" mdbInput mdbValidate formControlName="idade">
-                    <label for="idade">Idade</label>
-                  </div>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
-                    <input mdbInput mdbValidate formControlName="email" minLength="8" maxLength="25"
-                           type="email"
-                           class="form-control" id="email">
-                    <label for="email">Insira seu e-mail</label>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
-                    <input mdbInput mdbValidate formControlName="senha" minLength="10" maxLength="25"
-                           type="password"
-                           class="form-control" id="senha">
-                    <label for="senha">Insira sua senha</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--ABA DE ENDEREÇO-->
-            <div [ngClass]="{'show active': abaSelected=='profile'}" (click)="changeAbaSelected('profile')"
-                 class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-              <div class="md-form">
-                <mdb-icon fas icon="road" class="prefix"></mdb-icon>
-                <input mdbInput type="text" id="rua" mdbValidate formControlName="rua" class="form-control">
-                <label for="rua">Rua</label>
-              </div>
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="address-card" class="prefix"></mdb-icon>
-                    <input mdbInput type="text" id="bairro" mdbValidate formControlName="bairro" class="form-control">
-                    <label for="bairro">Bairro</label>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="sort-numeric-down" class="prefix"></mdb-icon>
-                    <input type="number" class="form-control" formControlName="numero" mdbValidate id="numero" mdbInput>
-                    <label for="numero">Numero</label>
-                  </div>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="city" class="prefix"></mdb-icon>
-                    <input mdbInput type="text" mdbValidate formControlName="cidade" id="cidade" class="form-control">
-                    <label for="cidade">Cidade</label>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="location-arrow" class="prefix"></mdb-icon>
-                    <input type="number" class="form-control" mdbValidate formControlName="cep" id="cep" mdbInput maxlength="8">
-                    <label for="cep">Cep</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--ABA DE CONTATO-->
-            <div [ngClass]="{'show active': abaSelected=='contato'}" (click)="changeAbaSelected('contato')"
-                 class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-              <div class="form-row">
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="mobile-alt" class="prefix"></mdb-icon>
-                    <input type="number" class="form-control" id="celular" mdbInput maxlength="11" >
-                    <label for="celular">Telefone Celular</label>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fas icon="phone" class="prefix"></mdb-icon>
-                    <input type="number" class="form-control" id="residencial" mdbInput maxlength="10">
-                    <label for="residencial">Telefone Residencial</label>
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <div class="col">
-                <h5 class="text-center text-black-50">Redes Sociais</h5>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fab icon="facebook" class="prefix"></mdb-icon>
-                    <input type="text" class="form-control" id="facebook" mdbInput>
-                    <label for="facebook">Facebook</label>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fab icon="instagram" class="prefix"></mdb-icon>
-                    <input type="text" class="form-control" id="instagram" mdbInput>
-                    <label for="instagram">Instagram</label>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="md-form">
-                    <mdb-icon fab icon="twitter" class="prefix"></mdb-icon>
-                    <input type="text" class="form-control" id="twitter" mdbInput>
-                    <label for="twitter">Twitter</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
+  <form [formGroup]="formulario">
+  <h3 mat-dialog-title style="font-weight: bold">Informações do usuario:</h3>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Nome Completo</mat-label>
+          <input matInput type="text" formControlName="nome_completo">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Apelido</mat-label>
+          <input matInput type="text" formControlName="apelido">
+        </mat-form-field>
+      </div>
+      <div class="col d-flex justify-content-center">
+            <mat-form-field class="example-full-width">
+              <mat-label appearance="fill">Data nascimento:</mat-label>
+              <input matInput  mdbValidate formControlName="data_nascimento" [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker">
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Posição</mat-label>
+          <input matInput type="text" formControlName="posicao">
+        </mat-form-field>
       </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Sexo</mat-label>
+          <input matInput type="text" formControlName="sexo">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Pé-preferido</mat-label>
+          <input matInput type="text" formControlName="pe_preferido">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Idade:</mat-label>
+          <input matInput type="number" formControlName="idade">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">E-mail</mat-label>
+          <input matInput type="email" formControlName="email">
+        </mat-form-field>
+      </div>
+    </div>
+  <h3 mat-dialog-title style="font-weight: bold">Endereço:</h3>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Rua</mat-label>
+          <input matInput type="text" formControlName="rua">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Bairro</mat-label>
+          <input matInput type="text" formControlName="bairro">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Numero</mat-label>
+          <input matInput type="number" formControlName="numero">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Cidade</mat-label>
+          <input matInput type="email" formControlName="cidade">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Cep</mat-label>
+          <input matInput type="number" formControlName="cep">
+        </mat-form-field>
+      </div>
+    </div>
+  <h3>Contato:</h3>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Celular</mat-label>
+          <input matInput type="tel" formControlName="celular">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Telefone Residencial</mat-label>
+          <input matInput type="tel" formControlName="telefone">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Facebook</mat-label>
+          <input matInput type="url" formControlName="facebook">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Instagram</mat-label>
+          <input matInput type="url" formControlName="instagram">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Twitter</mat-label>
+          <input matInput type="url" formControlName="twitter">
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button type="button" class="btn btn-dark" mat-dialog-close>Fechar</button>
-  <button mat-button type="button" class="btn btn-success" [mat-dialog-close]="true" cdkFocusInitial>Salvar Alterações</button>
+  <button mat-button type="button" class="btn btn-success" [mat-dialog-close]="true" cdkFocusInitial (click)="submit()">Salvar Alterações</button>
 </mat-dialog-actions>
 

@@ -4,7 +4,7 @@
       <h4>Horarios:</h4>
       <mat-form-field appearance="fill">
         <mat-label>Selecione a quadra</mat-label>
-        <mat-select (valueChange)="alterarQuadraSelecionada($event)"  name="quadras">
+        <mat-select (valueChange)="alterarQuadraSelecionada($event)"  name="quadras" [value]="'Gauchinho'">
           <mat-option *ngFor="let quadra of quadras; let i = index" [value]="quadra.nome_quadra">
             {{quadra.nome_quadra}}
           </mat-option>

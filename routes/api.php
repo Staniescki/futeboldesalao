@@ -23,6 +23,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Api'], function () {
 Route::group(['middleware' => ['apiJwt']], function (){
     Route::group(['prefix' => 'user', 'namespace' => 'Api'], function () {
         Route::post('create', 'UserController@create');
+        Route::post('update', 'UserController@updateUser');
         Route::get('users', 'UserController@index');
     });
     Route::group(['prefix' => 'agenda', 'namespace' => 'Api'], function () {

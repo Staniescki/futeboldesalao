@@ -77,7 +77,7 @@ export class TokenService {
 
   verificarValidadeToken() {
     let token = this.get();
-    if(token !== null){
+    if(token != null){
       let payload = this.payload(this.get());
       if (payload.exp > moment().unix()) {
         const oneMinuteBeforeLogout = moment.unix(payload.exp).subtract(1, 'minutes').format("YYYY-MM-DD HH:mm");

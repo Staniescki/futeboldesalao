@@ -25,16 +25,6 @@ export class LoginComponent implements OnInit {
   errorMessage: string
 
   /**
-   * Elemento Body
-   */
-  private elementBody: any
-
-  /**
-   * Define se o CAPS LOCK está ligado.
-   */
-  public capsLockLigado: boolean
-
-  /**
    * Status de erro.
    */
   errorStatus: number
@@ -63,6 +53,7 @@ export class LoginComponent implements OnInit {
 
     this.token.autenticacaoExpirada.subscribe((expirado) => {
       if(expirado) {
+        this.notify.info('Token expirado, favor realizar login novamente!')
         this.router.navigateByUrl('/login')
       }
     })
@@ -98,6 +89,7 @@ export class LoginComponent implements OnInit {
     this.localStorageService.set('current_user', data.current_user)
     this.userService.getUser().subscribe((response: any) => {
     this.localStorageService.set('usuario', response)
+    this.userService.sendUser.next(response)
     }, (error: any) => {
        this.notify.error("Ocorreu um erro ao resgatar permissoes")
     })

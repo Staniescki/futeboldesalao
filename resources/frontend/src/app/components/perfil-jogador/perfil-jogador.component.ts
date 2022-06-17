@@ -28,13 +28,8 @@ export class PerfilJogadorComponent implements OnInit {
     this.user = this.localStorage.get('usuario')
 
   }
-
-
-
-
-
  openModal(){
-    this.dialog.open(EditarUsuarioComponent)
+    this.dialog.open(EditarUsuarioComponent, {disableClose: true, data: this.usuario})
  }
 
 }

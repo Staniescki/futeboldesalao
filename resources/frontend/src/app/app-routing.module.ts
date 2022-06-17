@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {Router, RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {NovoUsuarioComponent} from './components/novo-usuario/novo-usuario.component'
 import {SidebarComponent} from './components/sidebar/sidebar.component'
@@ -13,6 +13,8 @@ import {PagamentoComponent} from "./components/pagamento/pagamento.component";
 import {HomeComponent} from "./components/home/home.component";
 import {AfterLoginService} from "./services/after-login.service";
 import {PerfilResolver} from "./resolver/perfil.resolver";
+import {SnotifyService} from "ng-snotify";
+import {TokenService} from "./services/token.service";
 
 const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: "full"},
@@ -32,4 +34,18 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  constructor(private router: Router, snotify: SnotifyService, tokenService: TokenService) {
+    this.router.errorHandler = (error: any) => {
+      snotify.warning('O recurso que você está tentando acessar não existe.', {
+        closeOnClick: true,
+        timeout: 0,
+        showProgressBar: false,
+        buttons: [{text: 'Fechar', bold: false}]
+      })
+      if(!tokenService.loggedIn()){
+        this.router.navigateByUrl('/home')
+      }
+    }
+  }
+}

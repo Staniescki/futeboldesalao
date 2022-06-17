@@ -24,7 +24,7 @@ class Jogadores extends Model
      * Lista de colunas Existentes na tabela
      * @var string[]
      */
-    protected $fillable = ['id_jogador', 'id_usuario', 'apelido', 'idade', 'sexo', 'posicao', 'pe_preferido'];
+    protected $fillable = ['id_jogador', 'id_usuario', 'apelido', 'idade', 'sexo', 'posicao', 'pe_preferido', 'data_nascimento', 'telefone', 'celular', 'facebook', 'instagram', 'twitter', 'imgjogador'];
 
     /**
      * TimeStamps do eloquent

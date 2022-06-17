@@ -8,5 +8,10 @@ export class Jogadores {
   pe_preferido: string
   data_nascimento: any
   imgjogador: any
+  facebook: string
+  instagram: string
+  twitter: string
+  telefone: string
+  celular: string
 
 }

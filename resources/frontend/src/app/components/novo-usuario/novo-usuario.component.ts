@@ -52,6 +52,11 @@ export class NovoUsuarioComponent implements OnInit {
       cidade: ['', Validators.required],
       cep: ['', Validators.required],
       img: [''],
+      telefone: [''],
+      celular: [''],
+      facebook: [''],
+      twitter: [''],
+      instagram: [''],
     })
   }
 
@@ -74,7 +79,7 @@ export class NovoUsuarioComponent implements OnInit {
       this.formulario.value.img = this.imagemJogador.split(',')[1]
     }
     if (this.formulario.value.data_nascimento != null) {
-      this.formulario.value.data_nascimento = moment(this.formulario.value.data_nascimento, 'DDMMYYYY').format('YYYY-MM-DD')
+      this.formulario.value.data_nascimento = moment(this.formulario.value.data_nascimento, 'DDMMYYYY').format('YYYY/MM/DD')
     }
 
     this.userService.createUser(this.formulario.value).subscribe(response => {

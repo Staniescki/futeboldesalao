@@ -49,12 +49,16 @@ import {MatFormField} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import { HomeComponent } from './components/home/home.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {RouterModule, Routes} from "@angular/router";
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
 ]);
 
+export const routes: Routes = [
+  {path:'perfil-jogador', component: PerfilJogadorComponent}
+]
 
 @NgModule({
   declarations: [
@@ -77,11 +81,9 @@ FullCalendarModule.registerPlugins([
     CriarEventoComponent,
     EditarEventoComponent,
     HomeComponent
-
-
-
   ],
   imports: [
+    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload'}),
     MatTooltipModule,
     MatFormFieldModule,
     MatInputModule,

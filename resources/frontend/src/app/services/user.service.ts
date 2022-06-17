@@ -15,6 +15,8 @@ export class UserService {
   private config: Config = new Config
 
   public modalRecoveryPass: BehaviorSubject<any> = new BehaviorSubject<any>(null)
+  public sendUser: BehaviorSubject<any> = new BehaviorSubject<any>(null)
+
 
   constructor(private http: HttpClient, private localStorageService: LocalStorageService) { }
 
@@ -42,5 +44,9 @@ export class UserService {
    */
   createUser(data: any): Observable<any>{
     return this.http.post(this.config.get('urlServiceBackend') + 'user/create', data, {observe: 'response'})
+  }
+
+  updateUser(data: any): Observable<any>{
+    return this.http.post(this.config.get('urlServiceBackend') + 'user/update', data, {observe: 'response'})
   }
 }

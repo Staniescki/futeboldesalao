@@ -1,5 +1,5 @@
 <loader [scope]="main"></loader>
-<app-header></app-header>
+<app-header *ngIf="tokenService.loggedIn()"></app-header>
 <app-sidebar *ngIf="tokenService.loggedIn()" (onToggleSideNav)="onToogleSideNav($event)"></app-sidebar>
 <app-body
   [collapsed]="isSideNavCollapsed"

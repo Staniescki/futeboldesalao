@@ -58,7 +58,13 @@ class UserRepository
          'sexo'     =>  $request->sexo,
          'posicao'  =>  $request->posicao,
          'pe_preferido' =>  $request->pe_preferido,
-          'data_nascimento' =>$request->data_nascimento
+          'data_nascimento' =>$request->data_nascimento,
+          'facebook' =>$request->facebook,
+          'instagram' =>$request->instagram,
+          'twitter' =>$request->twitter,
+          'celular' =>$request->celular,
+          'telefone' =>$request->telefone,
+          'imgjogador' => $request->img,
         ];
 
        $user = $this->users->create($usuario);
@@ -73,6 +79,40 @@ class UserRepository
         return $this->users->with(['enderecoUsuario', 'jogadores'])->where('id', $id)->get();
     }
 
+    public function updateUsuario($request)
+    {
+        $usuario = [
+            'name' => $request->nome_completo,
+            'email'=> $request->email,
+        ];
 
+        $endereco = [
+            'bairro' => $request->bairro,
+            'cep'    => $request->cep,
+            'cidade' => $request->cidade,
+            'numero' => $request->numero,
+            'rua' => $request->rua,
+        ];
 
+        $jogador = [
+            'apelido'  =>  $request->apelido,
+            'idade'    =>  $request->idade,
+            'sexo'     =>  $request->sexo,
+            'posicao'  =>  $request->posicao,
+            'pe_preferido' =>  $request->pe_preferido,
+            'data_nascimento' =>$request->data_nascimento,
+            'facebook' =>$request->facebook,
+            'instagram' =>$request->instagram,
+            'twitter' =>$request->twitter,
+            'celular' =>$request->celular,
+            'telefone' =>$request->telefone,
+            'imgjogador' => $request->img,
+        ];
+
+        $user = $this->users->find($request->id);
+        $user->update($usuario);
+        $user->enderecoUsuario()->update($endereco);
+        $user->jogadores()->update($jogador);
+        return $user;
+    }
 }

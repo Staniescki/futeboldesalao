@@ -82,12 +82,9 @@ export class AgendaComponent implements OnInit {
     }
   }
 
-
-
   ngOnInit(): void {
-
+    this.alterarQuadraSelecionada('Gauchinho')
     this.usuario = this.localStore.get('usuario')
-
     this.quadraService.getQuadras().subscribe(data => {
       if (data) {
         this.quadras = data.quadras

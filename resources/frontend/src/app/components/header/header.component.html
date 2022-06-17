@@ -44,7 +44,7 @@
       <div  *ngIf="tokenService.loggedIn()">
         <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
           <li class="nav-item">
-            <span class="navbar-brand nav-link-inner--text entrar-como">Usuario: {{localStorage.get('usuario').name}}</span>
+            <span class="navbar-brand nav-link-inner--text entrar-como">Usuario: {{usuario.nome}}</span>
             <button class="btn btn-outline-dark" (click)="jwtService.logout()">
               <span class="btn-inner--icon">
                   <span class="btn-inner--icon"><img class="img" src="/assets/img/icons/common/entrar.png"></span>
