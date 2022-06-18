@@ -42,7 +42,7 @@
                    aria-selected="false">Contato</a>
               </li>
             </ul>
-            <form [formGroup]="formulario">
+            <form [formGroup]="formulario" #f>
               <div class="tab-content" id="pills-tabContent">
                 <!--ABA DE DADOS PESSOAIS-->
                 <div [ngClass]="{'show active': abaSelected=='home'}" (click)="changeAbaSelected('home')"
@@ -62,15 +62,11 @@
                     </div>
                       <div class="col d-flex justify-content-center">
                           <div class="md-form">
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="example-full-width" >
                           <mat-label>Data de Nascimento</mat-label>
-                          <input matInput  mdbValidate formControlName="data_nascimento" [matDatepicker]="picker">
-                          <!--<mat-hint>MM/DD/YYYY</mat-hint>
-                          Serve para colocar um placeholder
-                          -->
-                          <mat-datepicker-toggle matSuffix [for]="picker">
-                          </mat-datepicker-toggle>
-                          <mat-datepicker #picker></mat-datepicker>
+                          <input  matInput formControlName="data_nascimento" [matDatepicker]="picker">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker ></mat-datepicker>
                         </mat-form-field>
                           </div>
                       </div>
@@ -137,17 +133,12 @@
                 <!--ABA DE ENDEREÇO-->
                 <div [ngClass]="{'show active': abaSelected=='profile'}" (click)="changeAbaSelected('profile')"
                      class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                  <div class="md-form">
-                  <mdb-icon fas icon="road" class="prefix"></mdb-icon>
-                  <input mdbInput type="text" id="rua" mdbValidate formControlName="rua" class="form-control">
-                  <label for="rua">Rua</label>
-                 </div>
                   <div class="form-row">
                     <div class="col">
                       <div class="md-form">
-                        <mdb-icon fas icon="address-card" class="prefix"></mdb-icon>
-                        <input mdbInput type="text" id="bairro" mdbValidate formControlName="bairro" class="form-control">
-                        <label for="bairro">Bairro</label>
+                        <mdb-icon fas icon="location-arrow" class="prefix"></mdb-icon>
+                        <input type="text" class="form-control" mask="00000-000" mdbValidate formControlName="cep" [dropSpecialCharacters]="true" id="cep"  mdbInput (blur)="consultaCep($event.target)">
+                        <label for="cep">Cep</label>
                       </div>
                     </div>
                     <div class="col">
@@ -158,19 +149,24 @@
                       </div>
                     </div>
                   </div>
+                  <div class="md-form">
+                  <mdb-icon fas icon="road" class="prefix"></mdb-icon>
+                  <input mdbInput type="text" id="rua" mdbValidate formControlName="rua" class="form-control" readonly [disabled]="true">
+                  <label for="rua">Rua</label>
+                 </div>
                   <div class="form-row">
                     <div class="col">
                       <div class="md-form">
                         <mdb-icon fas icon="city" class="prefix"></mdb-icon>
-                        <input mdbInput type="text" mdbValidate formControlName="cidade" id="cidade" class="form-control">
+                        <input mdbInput type="text" mdbValidate formControlName="cidade" id="cidade" class="form-control" readonly [disabled]="true">
                         <label for="cidade">Cidade</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="md-form">
-                        <mdb-icon fas icon="location-arrow" class="prefix"></mdb-icon>
-                        <input type="number" class="form-control" mdbValidate formControlName="cep" id="cep" mdbInput maxlength="8">
-                        <label for="cep">Cep</label>
+                        <mdb-icon fas icon="address-card" class="prefix"></mdb-icon>
+                        <input mdbInput type="text" id="bairro" mdbValidate formControlName="bairro" class="form-control" readonly [disabled]="true">
+                        <label for="bairro">Bairro</label>
                       </div>
                     </div>
                   </div>
@@ -182,14 +178,14 @@
                   <div class="col">
                     <div class="md-form">
                       <mdb-icon fas icon="mobile-alt" class="prefix"></mdb-icon>
-                      <input type="number" class="form-control" id="celular" mdbInput maxlength="11" formControlName="celular">
+                      <input type="tel" prefix="+55" mask=" (00) 00000-0000" class="form-control" id="celular" mdbInput  formControlName="celular">
                       <label for="celular">Telefone Celular</label>
                     </div>
                   </div>
                   <div class="col">
                     <div class="md-form">
                       <mdb-icon fas icon="phone" class="prefix"></mdb-icon>
-                      <input type="number" class="form-control" id="residencial" mdbInput maxlength="10" formControlName="telefone">
+                      <input type="tel" prefix="+55" mask=" (00) 0000-0000" class="form-control" id="residencial" mdbInput formControlName="telefone">
                       <label for="residencial">Telefone Residencial</label>
                     </div>
                   </div>

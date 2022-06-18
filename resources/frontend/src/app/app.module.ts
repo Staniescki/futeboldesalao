@@ -50,15 +50,24 @@ import {MatSelectModule} from "@angular/material/select";
 import { HomeComponent } from './components/home/home.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {RouterModule, Routes} from "@angular/router";
+import {IConfig, NgxMaskModule} from "ngx-mask";
+import {TextMaskModule} from "angular2-text-mask";
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
 ]);
 
+const maskConfigFunction: () => Partial<IConfig> = () => {
+  return {
+    dropSpecialCharacters: true,
+  };
+};
+
 export const routes: Routes = [
   {path:'perfil-jogador', component: PerfilJogadorComponent}
 ]
+
 
 @NgModule({
   declarations: [
@@ -80,10 +89,12 @@ export const routes: Routes = [
     LoaderComponent,
     CriarEventoComponent,
     EditarEventoComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload'}),
+    NgxMaskModule.forRoot(maskConfigFunction),
+    TextMaskModule,
     MatTooltipModule,
     MatFormFieldModule,
     MatInputModule,

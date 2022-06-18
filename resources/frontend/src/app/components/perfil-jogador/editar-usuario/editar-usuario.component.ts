@@ -7,6 +7,7 @@ import {SnotifyService} from "ng-snotify";
 import {UserService} from "../../../services/user.service";
 import {LocalStorageService} from "../../../services/local-storage.service";
 import {Router} from "@angular/router";
+import {CepService} from "../../../services/cep.service";
 
 @Component({
   selector: 'app-editar-usuario',
@@ -30,7 +31,8 @@ export class EditarUsuarioComponent implements OnInit {
               private notify: SnotifyService,
               private userService: UserService,
               private localStorage: LocalStorageService,
-              private router: Router) {
+              private router: Router,
+              private cepService: CepService) {
 
 
     let dateObj = new Date(this.data.jogadores.data_nascimento)
@@ -63,6 +65,21 @@ export class EditarUsuarioComponent implements OnInit {
     this.dialogRef.updateSize('75%', '80%');
   }
 
+  consultaCep(cep: any) {
+    this.cepService.buscarCep(cep.value).subscribe(data => {
+      this.popularForm(data)
+    })
+  }
+
+  popularForm(dados: any) {
+    this.formulario.patchValue({
+      cep: dados.cep,
+      rua: dados.logradouro,
+      bairro: dados.bairro,
+      cidade: dados.localidade
+    })
+  }
+
   closeModal(){
     this.isVisible = false
   }
@@ -74,6 +91,7 @@ export class EditarUsuarioComponent implements OnInit {
   submit() {
     this.loader.show()
     if (!this.formulario.valid){
+      console.log(this.formulario)
       this.notify.warning('Revisar Formulario! Preenchimento incorreto')
       this.loader.hide()
       return

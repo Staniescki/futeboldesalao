@@ -5,6 +5,7 @@ import {UserService} from "../../services/user.service";
 import {SnotifyService} from "ng-snotify";
 import * as moment from 'moment';
 import {Observable, Subscriber} from "rxjs";
+import {CepService} from "../../services/cep.service";
 
 @Component({
   selector: 'app-novo-usuario',
@@ -35,6 +36,12 @@ export class NovoUsuarioComponent implements OnInit {
     this.abaSelected = aba
   }
 
+  constructor(private fb: FormBuilder,
+              private loader: LoaderService,
+              private userService: UserService,
+              private notify: SnotifyService,
+              private cepService: CepService) {}
+
   ngOnInit() {
     this.formulario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -60,10 +67,20 @@ export class NovoUsuarioComponent implements OnInit {
     })
   }
 
-  constructor(private fb: FormBuilder,
-              private loader: LoaderService,
-              private userService: UserService,
-              private notify: SnotifyService) {}
+  consultaCep(cep: any) {
+    this.cepService.buscarCep(cep.value).subscribe(data => {
+      this.popularForm(data)
+    })
+  }
+
+  popularForm(dados: any) {
+    this.formulario.patchValue({
+      cep: dados.cep,
+      rua: dados.logradouro,
+      bairro: dados.bairro,
+      cidade: dados.localidade
+    })
+  }
 
 
   onSubmit(){

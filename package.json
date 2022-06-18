@@ -19,6 +19,6 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "ngx-mask": "^13.1.12"
+        "ngx-mask": "^13.1.15"
     }
 }
