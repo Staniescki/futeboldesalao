@@ -62,7 +62,7 @@ export class EditarUsuarioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.dialogRef.updateSize('75%', '80%');
+    this.dialogRef.updateSize('80%', '85%');
   }
 
   consultaCep(cep: any) {

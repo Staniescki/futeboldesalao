@@ -6,8 +6,14 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
-              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+              <img [src]="imagePath" alt="Admin" class="rounded-circle" width="150">
               <div class="mt-3">
+               <form [formGroup]="formulario">
+                <input id="singleFile" type="file" formControlName="photo" (change)="onFileChange($event)" accept=".jpg,.png,.jpeg">
+                 <div class="m-2">
+                 <button class="btn btn-success" (click)="onSubmit()" *ngIf="getPhoto['photo'].value != ''">Salvar</button>
+                 </div>
+               </form>
                 <h4>{{usuario.name | titlecase}}</h4>
                 <p class="text-success mb-1 fw-bold">Posição:</p>
                 <p class="text-muted font-size-sm fw-bold">{{usuario.jogadores?.posicao | uppercase}}</p>

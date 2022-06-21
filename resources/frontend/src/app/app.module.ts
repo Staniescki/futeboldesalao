@@ -52,6 +52,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {RouterModule, Routes} from "@angular/router";
 import {IConfig, NgxMaskModule} from "ngx-mask";
 import {TextMaskModule} from "angular2-text-mask";
+import {MatFileUploadModule} from "angular-material-fileupload";
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -92,6 +93,7 @@ export const routes: Routes = [
     HomeComponent,
   ],
   imports: [
+    MatFileUploadModule,
     RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload'}),
     NgxMaskModule.forRoot(maskConfigFunction),
     TextMaskModule,

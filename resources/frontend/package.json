@@ -29,6 +29,7 @@
     "@fullcalendar/timegrid": "^5.11.0",
     "@types/chart.js": "^2.9.36",
     "angular-bootstrap-md": "^13.0.0",
+    "angular-material-fileupload": "^3.0.2",
     "angular2-text-mask": "^9.0.0",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.1.3",
