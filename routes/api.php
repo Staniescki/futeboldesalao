@@ -25,6 +25,7 @@ Route::group(['middleware' => ['apiJwt']], function (){
         Route::post('create', 'UserController@create');
         Route::post('update', 'UserController@updateUser');
         Route::get('users', 'UserController@index');
+        Route::get('buscar_todos', 'UserController@buscar_todos');
     });
     Route::group(['prefix' => 'agenda', 'namespace' => 'Api'], function () {
        Route::get('horarios/{id}', 'AgendaController@horarios');
@@ -38,6 +39,10 @@ Route::group(['middleware' => ['apiJwt']], function (){
     Route::group(['prefix' => 'usuario', 'namespace' => 'Api'], function () {
        Route::get('buscar/{id}', 'JogadorController@buscar');
     });
+    Route::group(['prefix' => 'time', 'namespace' => 'Api'], function () {
+        Route::post('criar', 'TimeController@criar');
+    });
+
 });
 
 

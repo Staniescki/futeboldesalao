@@ -4,15 +4,13 @@
       <div class="col-lg-4">
         <div class="card mb-2">
           <div class="card-body text-center">
-            <img src="/assets/img/gremio.svg" alt="avatar"
+            <img [src]="imagemJogador"
                  class="img-fluid" style="width: 150px;">
-            <h5 class="my-3">Gremio Football P.A</h5>
+            <h5 class="my-3">{{nome_clube}}</h5>
             <div class="row">
               <div id="image" class="col">
                 <div class="md-form">
-                  <a href="">
-                    <mdb-icon id="icone" fas icon="camera" class="prefix" ></mdb-icon>
-                  </a>
+                    <input type="file" class="form-control" id="customFile" (change)="onFileChange($event)" accept=".jpg,.png,.jpeg" />
                 </div>
               </div>
             </div>
@@ -37,7 +35,7 @@
                 <div class="col">
                   <div class="md-form">
                     <mdb-icon fas icon="check" class="prefix"></mdb-icon>
-                    <input mdbInput type="text" id="nome_oficial" mdbValidate formControlName="nome_oficial" class="form-control">
+                    <input mdbInput type="text" id="nome_oficial" mdbValidate [(ngModel)]="nome_clube" formControlName="nome_oficial" class="form-control">
                     <label for="nome_oficial">Nome oficial do clube</label>
                   </div>
                 </div>
@@ -55,9 +53,7 @@
                 </div>
                 <div class="col">
                   <div class="md-form">
-                    <mdb-icon fas icon="male" class="prefix"></mdb-icon>
-                    <input mdbInput type="text" id="presidente" class="form-control" mdbValidate formControlName="presidente">
-                    <label for="presidente">Presidente do Clube</label>
+                    <ng-multiselect-dropdown mdbValidate [placeholder]="'Selecionar Presidente'" [settings]="dropdownSettings" [data]="name" formControlName="presidente"></ng-multiselect-dropdown>
                   </div>
                 </div>
               </div>
@@ -73,7 +69,28 @@
                       </mat-form-field>
                     </div>
                   </div>
+                  <div class="col">
+                    <div class="md-form">
+                      <select class="browser-default custom-select" mdbValidate formControlName="cidade">
+                        <option value="" readonly="true" hidden="true" selected>Cidade</option>
+                        <option value="Alvorada">Alvorada</option>
+                        <option value="Porto Alegre">Porto Alegre</option>
+                        <option value="Viamao">Viamão</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
+              <div class="row">
+                <div class="md-form">
+                <mat-form-field appearance="fill">
+                  <mat-select formControlName="quadra_local" name="quadra_local" [placeholder]="'Quadra Local'">
+                    <mat-option *ngFor="let quadra of quadras; let i = index" [value]="quadra.id_quadra">
+                      {{quadra.nome_quadra}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                </div>
+              </div>
               <div class="d-flex justify-content-end">
                 <button type="button" mdbBtn color="success" mdbWavesEffect (click)="onSubmit()">Cadastrar</button>
               </div>

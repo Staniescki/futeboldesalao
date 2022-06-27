@@ -16,6 +16,8 @@ export class NovoUsuarioComponent implements OnInit {
 
   public formulario: FormGroup;
 
+  public nome_usuario: any = ''
+
   public celular: any
 
   public abaSelected = 'home'
@@ -30,7 +32,7 @@ export class NovoUsuarioComponent implements OnInit {
 
   public file: any
 
-  public imagemJogador: any
+  public imagemJogador: any = 'https://st.depositphotos.com/2218212/2938/i/600/depositphotos_29387653-stock-photo-facebook-profile.jpg'
 
   public changeAbaSelected(aba: string){
     this.abaSelected = aba
@@ -116,7 +118,11 @@ export class NovoUsuarioComponent implements OnInit {
       this.readFile(file, subscriber)
     });
     observable.subscribe((foto) => {
-      this.imagemJogador = foto
+      if (foto) {
+        this.imagemJogador = foto
+      }else {
+        this.imagemJogador = 'https://st.depositphotos.com/2218212/2938/i/600/depositphotos_29387653-stock-photo-facebook-profile.jpg'
+      }
     })
   }
 

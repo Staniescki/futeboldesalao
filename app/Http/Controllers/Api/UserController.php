@@ -87,4 +87,10 @@ class UserController extends Controller
         $user = $this->userRepository->updateUsuario($request);
         return \response()->json(['user' => $user], 200);
     }
+
+    public function buscar_todos()
+    {
+        $user = $this->userRepository->buscarUsuarioInput();
+        return \response()->json(['user' => $user], 200);
+    }
 }

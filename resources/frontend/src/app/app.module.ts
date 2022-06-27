@@ -53,6 +53,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {IConfig, NgxMaskModule} from "ngx-mask";
 import {TextMaskModule} from "angular2-text-mask";
 import {MatFileUploadModule} from "angular-material-fileupload";
+import {MentionModule} from "angular-mentions";
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -93,6 +95,8 @@ export const routes: Routes = [
     HomeComponent,
   ],
   imports: [
+    NgMultiSelectDropDownModule.forRoot(),
+    MentionModule,
     MatFileUploadModule,
     RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload'}),
     NgxMaskModule.forRoot(maskConfigFunction),

@@ -15,6 +15,7 @@ import {AfterLoginService} from "./services/after-login.service";
 import {PerfilResolver} from "./resolver/perfil.resolver";
 import {SnotifyService} from "ng-snotify";
 import {TokenService} from "./services/token.service";
+import {NomeJogadoresResolver} from "./resolver/nome-jogadores.resolver";
 
 const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: "full"},
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: "perfil-jogador", component:PerfilJogadorComponent, canActivate: [AfterLoginService], resolve: {usuario: PerfilResolver}},
   {path: "estatisticas-jogador", component:EstatisticasJogadorComponent, canActivate: [AfterLoginService]},
   {path: "estatisticas-time", component:EstatisticasTimeComponent, canActivate: [AfterLoginService]},
-  {path: "novo-time", component:CriarTimeComponent, canActivate: [AfterLoginService]},
+  {path: "novo-time", component:CriarTimeComponent, canActivate: [AfterLoginService], resolve: {jogadores: NomeJogadoresResolver}},
   {path: "perfil-time", component:PerfilTimeComponent, canActivate: [AfterLoginService]},
   {path: "agenda/:id", component:AgendaComponent, canActivate: [AfterLoginService]},
   {path: "login", component:LoginComponent},

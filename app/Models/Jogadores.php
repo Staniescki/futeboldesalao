@@ -39,4 +39,9 @@ class Jogadores extends Model
         return $this->belongsTo('App\User', 'id', 'id_usuario');
     }
 
+    public function time()
+    {
+        return $this->hasOne('App\Models\Time', 'presidente_id', 'id_usuario');
+    }
+
 }

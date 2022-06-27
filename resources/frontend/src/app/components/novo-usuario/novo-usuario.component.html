@@ -6,7 +6,7 @@
           <div class="card-body text-center">
             <img [src]="imagemJogador" alt="avatar"
                  class="rounded-circle img-fluid" style="width: 150px; height: 150px">
-            <h5 class="my-3">Diego Staniescki</h5>
+            <h5 class="my-3">{{nome_usuario}}</h5>
             <div class="row">
               <div id="image" class="col">
                 <div class="md-form">
@@ -16,8 +16,6 @@
             </div>
             <p class="text-muted mb-1">Selecionar Foto</p>
             <div class="d-flex justify-content-center mb-2">
-              <!--<button type="button" class="btn btn-primary">Follow</button>
-              <button type="button" class="btn btn-outline-primary ms-1">Message</button>-->
             </div>
           </div>
         </div>
@@ -49,7 +47,7 @@
                      class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                   <div class="md-form">
                     <mdb-icon fas icon="user-alt" class="prefix"></mdb-icon>
-                    <input mdbInput  mdbValidate type="text" id="nome" class="form-control" formControlName="nome_completo">
+                    <input mdbInput  mdbValidate type="text" id="nome" [(ngModel)]="nome_usuario" class="form-control" formControlName="nome_completo">
                     <label for="nome">Nome Completo</label>
                   </div>
                   <div class="form-row">

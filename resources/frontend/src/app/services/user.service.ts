@@ -49,4 +49,8 @@ export class UserService {
   updateUser(data: any): Observable<any>{
     return this.http.post(this.config.get('urlServiceBackend') + 'user/update', data, {observe: 'response'})
   }
+
+  getAllUser(){
+    return this.http.get(this.config.get('urlServiceBackend') + 'user/buscar_todos', {observe: 'response'})
+  }
 }

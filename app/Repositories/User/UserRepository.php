@@ -115,4 +115,9 @@ class UserRepository
         $user->jogadores()->update($jogador);
         return $user;
     }
+
+    public function buscarUsuarioInput()
+    {
+        return $this->jogadores->select('id_usuario','apelido')->get();
+    }
 }
