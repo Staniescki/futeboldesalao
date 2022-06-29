@@ -18,4 +18,8 @@ export class TimeService {
   criarTime(data: any): Observable<any>{
     return this.http.post(this.config.get('urlServiceBackend') + 'time/criar', data, {observe: 'response'})
   }
+
+  atualizarTime(data: any): Observable<any>{
+    return this.http.post(this.config.get('urlServiceBackend') + 'time/update', data, {observe: 'response'})
+  }
 }

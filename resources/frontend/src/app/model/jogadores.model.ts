@@ -1,3 +1,5 @@
+import {Time} from "./time.model";
+
 export class Jogadores {
   id_jogador: number
   id_usuario: number
@@ -13,5 +15,6 @@ export class Jogadores {
   twitter: string
   telefone: string
   celular: string
+  time: Time
 
 }

@@ -5,17 +5,16 @@
       <div class="col-lg-4">
         <div class="card mb-2">
           <div class="card-body text-center">
-            <img src="/assets/img/gremio.svg" alt="avatar"
+            <img [src]="imagePath" alt="avatar"
                  class="img-fluid" style="width: 150px;">
-            <h5 class="my-3">Gremio Football P.A</h5>
+            <h5 class="my-3 fw-bold">{{usuario.jogadores?.time[0]?.nome_oficial | uppercase}}</h5>
             <div class="row">
-              <div id="image" class="col">
-                <div class="md-form">
-                  <a href="">
-                    <mdb-icon id="icone" fas icon="camera" class="prefix" ></mdb-icon>
-                  </a>
+              <form [formGroup]="formulario">
+                <input id="singleFile" type="file" formControlName="photo" (change)="onFileChange($event)" accept=".jpg,.png,.jpeg">
+                <div class="m-2">
+                  <button class="btn btn-success" (click)="onSubmit()" *ngIf="getPhoto['photo'].value != ''">Salvar</button>
                 </div>
-              </div>
+              </form>
             </div>
             <p class="text-muted mb-1">Selecionar Foto</p>
             <div class="d-flex justify-content-center mb-2">
@@ -29,47 +28,50 @@
         <div class="card mb-3">
           <div class="card-body">
             <div class="row">
+              <h3 class="text-muted text-center mb-4 fw-bold">Informações da Equipe</h3>
+            </div>
+            <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Nome do clube</h6>
+                <h6 class="mb-0 fw-bold">Nome do clube</h6>
               </div>
-              <div class="col-sm-9">
-                Gremio
+              <div class="col-sm-9 bg-text">
+                {{usuario.jogadores?.time[0]?.nome_time | uppercase}}
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Nome Oficial do Clube</h6>
+                <h6 class="mb-0 fw-bold">Nome Oficial do Clube</h6>
               </div>
-              <div class="col-sm-9">
-                Gremio Football Porto Alegrense
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <h6 class="mb-0">Categoria do clube</h6>
-              </div>
-              <div class="col-sm-9">
-                Ouro
+              <div class="col-sm-9 bg-text">
+                {{usuario.jogadores?.time[0]?.nome_oficial | uppercase}}
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Presidente do Clube</h6>
+                <h6 class="mb-0 fw-bold">Categoria do clube</h6>
               </div>
-              <div class="col-sm-9">
-                Diego Staniescki
+              <div class="col-sm-9 bg-text">
+                {{usuario.jogadores?.time[0]?.categoria | uppercase}}
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Data de Fundação</h6>
+                <h6 class="mb-0 fw-bold">Presidente do Clube</h6>
               </div>
-              <div class="col-sm-9">
-                11/10/1195
+              <div class="col-sm-9 bg-text">
+                {{usuario.name | uppercase}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 fw-bold">Data de Fundação</h6>
+              </div>
+              <div class="col-sm-9 bg-text">
+                {{usuario.jogadores?.time[0].fundacao_time | date}}
               </div>
             </div>
             <hr>

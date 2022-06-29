@@ -1,66 +1,48 @@
-<h2 mat-dialog-title>Editar informações de usuario</h2>
+<h2 mat-dialog-title>Editar informações da equipe</h2>
 <mat-dialog-content class="mat-typography">
-<div class="col-lg-8" style="max-width: 38rem">
-  <div class="card mb-8">
-    <div class="card-body">
-      <form [formGroup]="validationForm">
-        <div class="form-row">
-          <div class="col">
-            <div class="md-form">
-              <mdb-icon far icon="futbol" class="prefix"></mdb-icon>
-              <input mdbInput type="text" id="nome" mdbValidate formControlName="nome" class="form-control">
-              <label for="nome">Nome do clube</label>
-            </div>
-          </div>
-          <div class="col">
-            <div class="md-form">
-              <mdb-icon fas icon="check" class="prefix"></mdb-icon>
-              <input mdbInput type="text" id="nome_oficial" mdbValidate formControlName="nome_oficial" class="form-control">
-              <label for="nome_oficial">Nome oficial do clube</label>
-            </div>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col">
-            <div class="md-form">
-              <select class="browser-default custom-select" mdbValidate formControlName="categoria">
-                <option value="" readonly="true" hidden="true" selected>Categoria do clube</option>
-                <option value="ouro">Ouro</option>
-                <option value="prata">Prata</option>
-                <option value="bronze">Bronze</option>
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div class="md-form">
-              <mdb-icon fas icon="male" class="prefix"></mdb-icon>
-              <input mdbInput type="text" id="presidente" class="form-control" mdbValidate formControlName="presidente">
-              <label for="presidente">Presidente do Clube</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="md-form">
-              <mat-form-field class="example-full-width">
-                <mat-label>Data de fundação</mat-label>
-                <input matInput [matDatepicker]="picker" mdbValidate formControlName="fundacao_time">
-                <!--<mat-hint>MM/DD/YYYY</mat-hint>
-                Serve para colocar um placeholder
-                -->
-                <mat-datepicker-toggle matSuffix [for]="picker">
-                </mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-      </form>
+  <form [formGroup]="formulario">
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Nome da equipe</mat-label>
+          <input matInput type="text" formControlName="nome">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Nome Oficial</mat-label>
+          <input matInput type="text" formControlName="nome_oficial">
+        </mat-form-field>
+      </div>
     </div>
-  </div>
-</div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="example-full-width">
+          <mat-label appearance="fill">Data de fundação:</mat-label>
+          <input matInput  mdbValidate formControlName="fundacao_time" [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label appearance="fill">Categoria da equipe:</mat-label>
+          <input matInput type="text" formControlName="categoria">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+          <div class="md-form">
+            <ng-multiselect-dropdown mdbValidate [placeholder]="'Selecionar Presidente'" [settings]="dropdownSettings" [data]="name" formControlName="presidente"></ng-multiselect-dropdown>
+          </div>
+      </div>
+    </div>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button type="button" class="btn btn-dark" mat-dialog-close>Fechar</button>
-  <button mat-button type="button" class="btn btn-success" [mat-dialog-close]="true" cdkFocusInitial>Salvar Alterações</button>
+  <button mat-button type="button" class="btn btn-success" [mat-dialog-close]="true" cdkFocusInitial (click)="submit()">Salvar Alterações</button>
 </mat-dialog-actions>
+

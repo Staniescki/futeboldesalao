@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: "estatisticas-jogador", component:EstatisticasJogadorComponent, canActivate: [AfterLoginService]},
   {path: "estatisticas-time", component:EstatisticasTimeComponent, canActivate: [AfterLoginService]},
   {path: "novo-time", component:CriarTimeComponent, canActivate: [AfterLoginService], resolve: {jogadores: NomeJogadoresResolver}},
-  {path: "perfil-time", component:PerfilTimeComponent, canActivate: [AfterLoginService]},
+  {path: "perfil-time", component:PerfilTimeComponent, canActivate: [AfterLoginService], resolve: {usuario: PerfilResolver, jogadores: NomeJogadoresResolver}},
   {path: "agenda/:id", component:AgendaComponent, canActivate: [AfterLoginService]},
   {path: "login", component:LoginComponent},
   {path: "pagamento", component:PagamentoComponent, canActivate: [AfterLoginService]},
@@ -44,8 +44,10 @@ export class AppRoutingModule {
         showProgressBar: false,
         buttons: [{text: 'Fechar', bold: false}]
       })
-      if(!tokenService.loggedIn()){
+      if(tokenService.loggedIn()){
         this.router.navigateByUrl('/home')
+      }else{
+        this.router.navigateByUrl('/login')
       }
     }
   }

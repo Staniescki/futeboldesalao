@@ -32,6 +32,6 @@ class Time extends Model
 
     public function jogadores()
     {
-        return $this->hasOne('App\Models\Jogadores', 'id_jogador', 'presidente_id');
+        return $this->belongsTo('App\Models\Jogadores', 'id_jogador', 'presidente_id');
     }
 }

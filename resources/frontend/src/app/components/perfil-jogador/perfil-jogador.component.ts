@@ -70,6 +70,7 @@ export class PerfilJogadorComponent implements OnInit {
     });
     observable.subscribe((foto) => {
       this.imagemJogador = foto
+      this.imagePath = foto
     })
   }
 

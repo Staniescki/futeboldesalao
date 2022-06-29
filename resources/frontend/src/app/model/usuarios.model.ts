@@ -1,5 +1,6 @@
 import {enderecoUsuario} from "./endereco_usuario.model";
 import {Jogadores} from "./jogadores.model";
+import {Time} from "./time.model";
 
 export class usuario {
   created_at: any

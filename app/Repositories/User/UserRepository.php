@@ -76,7 +76,9 @@ class UserRepository
 
     public function buscarUsuario($id)
     {
-        return $this->users->with(['enderecoUsuario', 'jogadores'])->where('id', $id)->get();
+        return $this->users->with(['enderecoUsuario', 'jogadores.time' => function($time) use ($id){
+            $time->where('presidente_id', $id);
+        }])->where('id', $id)->get();
     }
 
     public function updateUsuario($request)

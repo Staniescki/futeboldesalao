@@ -71,6 +71,7 @@ export class NovoUsuarioComponent implements OnInit {
 
   consultaCep(cep: any) {
     this.cepService.buscarCep(cep.value).subscribe(data => {
+      console.log(data)
       this.popularForm(data)
     })
   }
